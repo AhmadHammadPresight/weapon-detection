@@ -19,7 +19,8 @@ function setUploadStatus(key, vars = {}) {
 
 function renderUploadStatus() {
   document.getElementById("upload-status").textContent = uploadState ? t(uploadState.key, uploadState.vars) : "";
-  document.getElementById("upload-hint").textContent = t("upload.hint", { fps: currentHealth()?.sample_fps ?? 2 });
+  const health = currentHealth();
+  document.getElementById("upload-hint").textContent = t("upload.hint", { fps: health?.sample_fps ?? 2, n: health?.video_min_frames ?? 3 });
 }
 
 function statusText(upload) {

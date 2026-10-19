@@ -20,7 +20,8 @@ CREATE TABLE IF NOT EXISTS uploads (
     frames INTEGER NOT NULL DEFAULT 0,
     error TEXT,
     detector TEXT,
-    threshold REAL,
+    thresholds TEXT,                 -- JSON {class: alert threshold} used for this upload
+    min_frames INTEGER,              -- consecutive frames required (1 for images)
     created TEXT NOT NULL
 );
 CREATE TABLE IF NOT EXISTS alerts (

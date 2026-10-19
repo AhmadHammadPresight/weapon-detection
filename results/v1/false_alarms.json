@@ -1,0 +1,469 @@
+{
+ "generated": "2026-10-19T09:49:44+00:00",
+ "detector": "rfdetr",
+ "model": "RF-DETR Medium, COCO-pretrained, fine-tuned on 20 weapon images and 0 weapon-free images (60 epochs, seed 7)",
+ "thresholds": {
+  "gun": 0.45,
+  "knife": 0.45
+ },
+ "single_threshold": 0.45,
+ "sample_fps": 2.0,
+ "cooldown_seconds": 10.0,
+ "video_min_frames": 3,
+ "app_rule": "class_thresholds_persistence",
+ "rules": {
+  "one_threshold_single_frame": {
+   "thresholds": 0.45,
+   "min_frames": 1
+  },
+  "one_threshold_persistence": {
+   "thresholds": 0.45,
+   "min_frames": 3
+  },
+  "class_thresholds_single_frame": {
+   "thresholds": {
+    "gun": 0.45,
+    "knife": 0.45
+   },
+   "min_frames": 1
+  },
+  "class_thresholds_persistence": {
+   "thresholds": {
+    "gun": 0.45,
+    "knife": 0.45
+   },
+   "min_frames": 3
+  }
+ },
+ "note": "Real CCTV clips with no weapons in them: every alert is a false alarm.",
+ "clips": [
+  {
+   "clip": "caviar-leftbag-atchair.mp4",
+   "seconds": 44.8,
+   "resolution": "384x288",
+   "frames_checked": 90,
+   "false_alarms": 2,
+   "by_class": {
+    "gun": 0,
+    "knife": 2
+   },
+   "alerts": [
+    {
+     "label": "knife",
+     "at_seconds": 14.5,
+     "confidence": 0.884,
+     "frames": 10
+    },
+    {
+     "label": "knife",
+     "at_seconds": 40.0,
+     "confidence": 0.811,
+     "frames": 2
+    }
+   ],
+   "by_rule": {
+    "one_threshold_single_frame": {
+     "false_alarms": 2,
+     "frames_over_threshold": 30
+    },
+    "one_threshold_persistence": {
+     "false_alarms": 2,
+     "frames_over_threshold": 30
+    },
+    "class_thresholds_single_frame": {
+     "false_alarms": 2,
+     "frames_over_threshold": 30
+    },
+    "class_thresholds_persistence": {
+     "false_alarms": 2,
+     "frames_over_threshold": 30
+    }
+   },
+   "top_confidence": 0.884,
+   "processing_seconds": 3.8
+  },
+  {
+   "clip": "caviar-leftbag-pickedup.mp4",
+   "seconds": 54.5,
+   "resolution": "384x288",
+   "frames_checked": 109,
+   "false_alarms": 1,
+   "by_class": {
+    "gun": 0,
+    "knife": 1
+   },
+   "alerts": [
+    {
+     "label": "knife",
+     "at_seconds": 2.0,
+     "confidence": 0.821,
+     "frames": 13
+    }
+   ],
+   "by_rule": {
+    "one_threshold_single_frame": {
+     "false_alarms": 1,
+     "frames_over_threshold": 27
+    },
+    "one_threshold_persistence": {
+     "false_alarms": 1,
+     "frames_over_threshold": 27
+    },
+    "class_thresholds_single_frame": {
+     "false_alarms": 1,
+     "frames_over_threshold": 27
+    },
+    "class_thresholds_persistence": {
+     "false_alarms": 1,
+     "frames_over_threshold": 27
+    }
+   },
+   "top_confidence": 0.821,
+   "processing_seconds": 4.1
+  },
+  {
+   "clip": "meva-g331-waiting-0307.mp4",
+   "seconds": 300.3,
+   "resolution": "1920x1080",
+   "frames_checked": 601,
+   "false_alarms": 1,
+   "by_class": {
+    "gun": 0,
+    "knife": 1
+   },
+   "alerts": [
+    {
+     "label": "knife",
+     "at_seconds": 292.0,
+     "confidence": 0.534,
+     "frames": 4
+    }
+   ],
+   "by_rule": {
+    "one_threshold_single_frame": {
+     "false_alarms": 7,
+     "frames_over_threshold": 25
+    },
+    "one_threshold_persistence": {
+     "false_alarms": 1,
+     "frames_over_threshold": 25
+    },
+    "class_thresholds_single_frame": {
+     "false_alarms": 7,
+     "frames_over_threshold": 25
+    },
+    "class_thresholds_persistence": {
+     "false_alarms": 1,
+     "frames_over_threshold": 25
+    }
+   },
+   "top_confidence": 0.773,
+   "processing_seconds": 23.9
+  },
+  {
+   "clip": "meva-g331-waiting-0315.mp4",
+   "seconds": 130.0,
+   "resolution": "1920x1080",
+   "frames_checked": 260,
+   "false_alarms": 0,
+   "by_class": {
+    "gun": 0,
+    "knife": 0
+   },
+   "alerts": [],
+   "by_rule": {
+    "one_threshold_single_frame": {
+     "false_alarms": 2,
+     "frames_over_threshold": 6
+    },
+    "one_threshold_persistence": {
+     "false_alarms": 0,
+     "frames_over_threshold": 6
+    },
+    "class_thresholds_single_frame": {
+     "false_alarms": 2,
+     "frames_over_threshold": 6
+    },
+    "class_thresholds_persistence": {
+     "false_alarms": 0,
+     "frames_over_threshold": 6
+    }
+   },
+   "top_confidence": 0.473,
+   "processing_seconds": 10.5
+  },
+  {
+   "clip": "meva-g420-stairs.mp4",
+   "seconds": 150.0,
+   "resolution": "1920x1072",
+   "frames_checked": 300,
+   "false_alarms": 0,
+   "by_class": {
+    "gun": 0,
+    "knife": 0
+   },
+   "alerts": [],
+   "by_rule": {
+    "one_threshold_single_frame": {
+     "false_alarms": 0,
+     "frames_over_threshold": 0
+    },
+    "one_threshold_persistence": {
+     "false_alarms": 0,
+     "frames_over_threshold": 0
+    },
+    "class_thresholds_single_frame": {
+     "false_alarms": 0,
+     "frames_over_threshold": 0
+    },
+    "class_thresholds_persistence": {
+     "false_alarms": 0,
+     "frames_over_threshold": 0
+    }
+   },
+   "top_confidence": 0.268,
+   "processing_seconds": 11.9
+  },
+  {
+   "clip": "meva-g421-cafe.mp4",
+   "seconds": 130.0,
+   "resolution": "1920x1072",
+   "frames_checked": 260,
+   "false_alarms": 1,
+   "by_class": {
+    "gun": 0,
+    "knife": 1
+   },
+   "alerts": [
+    {
+     "label": "knife",
+     "at_seconds": 81.0,
+     "confidence": 0.503,
+     "frames": 1
+    }
+   ],
+   "by_rule": {
+    "one_threshold_single_frame": {
+     "false_alarms": 4,
+     "frames_over_threshold": 11
+    },
+    "one_threshold_persistence": {
+     "false_alarms": 1,
+     "frames_over_threshold": 11
+    },
+    "class_thresholds_single_frame": {
+     "false_alarms": 4,
+     "frames_over_threshold": 11
+    },
+    "class_thresholds_persistence": {
+     "false_alarms": 1,
+     "frames_over_threshold": 11
+    }
+   },
+   "top_confidence": 0.545,
+   "processing_seconds": 10.5
+  },
+  {
+   "clip": "meva-g638-entrance.mp4",
+   "seconds": 130.0,
+   "resolution": "1920x1072",
+   "frames_checked": 260,
+   "false_alarms": 2,
+   "by_class": {
+    "gun": 0,
+    "knife": 2
+   },
+   "alerts": [
+    {
+     "label": "knife",
+     "at_seconds": 11.0,
+     "confidence": 0.489,
+     "frames": 2
+    },
+    {
+     "label": "knife",
+     "at_seconds": 84.5,
+     "confidence": 0.518,
+     "frames": 4
+    }
+   ],
+   "by_rule": {
+    "one_threshold_single_frame": {
+     "false_alarms": 4,
+     "frames_over_threshold": 55
+    },
+    "one_threshold_persistence": {
+     "false_alarms": 2,
+     "frames_over_threshold": 55
+    },
+    "class_thresholds_single_frame": {
+     "false_alarms": 4,
+     "frames_over_threshold": 55
+    },
+    "class_thresholds_persistence": {
+     "false_alarms": 2,
+     "frames_over_threshold": 55
+    }
+   },
+   "top_confidence": 0.569,
+   "processing_seconds": 10.7
+  },
+  {
+   "clip": "nvidia-071-c0644.mp4",
+   "seconds": 120.0,
+   "resolution": "1920x1080",
+   "frames_checked": 240,
+   "false_alarms": 0,
+   "by_class": {
+    "gun": 0,
+    "knife": 0
+   },
+   "alerts": [],
+   "by_rule": {
+    "one_threshold_single_frame": {
+     "false_alarms": 1,
+     "frames_over_threshold": 1
+    },
+    "one_threshold_persistence": {
+     "false_alarms": 0,
+     "frames_over_threshold": 1
+    },
+    "class_thresholds_single_frame": {
+     "false_alarms": 1,
+     "frames_over_threshold": 1
+    },
+    "class_thresholds_persistence": {
+     "false_alarms": 0,
+     "frames_over_threshold": 1
+    }
+   },
+   "top_confidence": 0.576,
+   "processing_seconds": 9.8
+  },
+  {
+   "clip": "nvidia-071-c0647.mp4",
+   "seconds": 120.0,
+   "resolution": "1920x1080",
+   "frames_checked": 240,
+   "false_alarms": 0,
+   "by_class": {
+    "gun": 0,
+    "knife": 0
+   },
+   "alerts": [],
+   "by_rule": {
+    "one_threshold_single_frame": {
+     "false_alarms": 2,
+     "frames_over_threshold": 4
+    },
+    "one_threshold_persistence": {
+     "false_alarms": 0,
+     "frames_over_threshold": 4
+    },
+    "class_thresholds_single_frame": {
+     "false_alarms": 2,
+     "frames_over_threshold": 4
+    },
+    "class_thresholds_persistence": {
+     "false_alarms": 0,
+     "frames_over_threshold": 4
+    }
+   },
+   "top_confidence": 0.557,
+   "processing_seconds": 9.6
+  },
+  {
+   "clip": "pexels-mall-corridor.mp4",
+   "seconds": 11.9,
+   "resolution": "1920x1080",
+   "frames_checked": 24,
+   "false_alarms": 0,
+   "by_class": {
+    "gun": 0,
+    "knife": 0
+   },
+   "alerts": [],
+   "by_rule": {
+    "one_threshold_single_frame": {
+     "false_alarms": 1,
+     "frames_over_threshold": 1
+    },
+    "one_threshold_persistence": {
+     "false_alarms": 0,
+     "frames_over_threshold": 1
+    },
+    "class_thresholds_single_frame": {
+     "false_alarms": 1,
+     "frames_over_threshold": 1
+    },
+    "class_thresholds_persistence": {
+     "false_alarms": 0,
+     "frames_over_threshold": 1
+    }
+   },
+   "top_confidence": 0.481,
+   "processing_seconds": 1.2
+  },
+  {
+   "clip": "pexels-mall-high-angle.mp4",
+   "seconds": 31.3,
+   "resolution": "2560x1440",
+   "frames_checked": 63,
+   "false_alarms": 0,
+   "by_class": {
+    "gun": 0,
+    "knife": 0
+   },
+   "alerts": [],
+   "by_rule": {
+    "one_threshold_single_frame": {
+     "false_alarms": 0,
+     "frames_over_threshold": 0
+    },
+    "one_threshold_persistence": {
+     "false_alarms": 0,
+     "frames_over_threshold": 0
+    },
+    "class_thresholds_single_frame": {
+     "false_alarms": 0,
+     "frames_over_threshold": 0
+    },
+    "class_thresholds_persistence": {
+     "false_alarms": 0,
+     "frames_over_threshold": 0
+    }
+   },
+   "top_confidence": 0.335,
+   "processing_seconds": 3.4
+  }
+ ],
+ "total": {
+  "clips": 11,
+  "seconds": 1222.8,
+  "frames_checked": 2447,
+  "false_alarms": 7,
+  "clips_with_false_alarms": 5,
+  "by_rule": {
+   "one_threshold_single_frame": {
+    "false_alarms": 24,
+    "clips_with_false_alarms": 9,
+    "frames_over_threshold": 160
+   },
+   "one_threshold_persistence": {
+    "false_alarms": 7,
+    "clips_with_false_alarms": 5,
+    "frames_over_threshold": 160
+   },
+   "class_thresholds_single_frame": {
+    "false_alarms": 24,
+    "clips_with_false_alarms": 9,
+    "frames_over_threshold": 160
+   },
+   "class_thresholds_persistence": {
+    "false_alarms": 7,
+    "clips_with_false_alarms": 5,
+    "frames_over_threshold": 160
+   }
+  }
+ }
+}

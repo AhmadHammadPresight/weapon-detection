@@ -1,4 +1,6 @@
 import io
+import json
+import subprocess
 import time
 
 import numpy as np
@@ -22,8 +24,8 @@ class FakeDetector:
 
 @pytest.fixture
 def client(tmp_path):
-    settings = Settings(data_dir=tmp_path, detector="fake", device="cpu", sample_fps=2, cooldown_seconds=10)
-    processor = Processor(settings, lambda: (FakeDetector(), 0.5))
+    settings = Settings(data_dir=tmp_path, detector="fake", device="cpu", sample_fps=2, cooldown_seconds=10, video_min_frames=3)
+    processor = Processor(settings, lambda: (FakeDetector(), {"gun": 0.5, "knife": 0.5}))
     with TestClient(create_app(settings, processor)) as c:
         yield c
 
@@ -51,7 +53,8 @@ def test_an_image_with_a_weapon_raises_an_alert_with_camera_time_and_boxed_frame
     response = send(client, png(bright=True))
     assert response.status_code == 201
     row = wait_done(client, response.json()["id"])
-    assert row["status"] == "done" and row["threshold"] == 0.5
+    assert row["status"] == "done" and json.loads(row["thresholds"]) == {"gun": 0.5, "knife": 0.5}
+    assert row["min_frames"] == 1  # a still image needs one detection
     alerts = client.get("/api/alerts").json()
     assert len(alerts) == 1
     alert = alerts[0]
@@ -93,8 +96,33 @@ def test_health_and_pages(client):
         if client.get("/api/health").json()["status"] == "ready":
             break
         time.sleep(0.02)
-    assert client.get("/api/health").json()["threshold"] == 0.5
+    assert client.get("/api/health").json()["thresholds"] == {"gun": 0.5, "knife": 0.5}
     assert "upload-form" in client.get("/").text
     assert "scores-body" in client.get("/results").text
     assert client.get("/api/results").status_code == 200
     assert client.get("/dataset/images/test/knife_robbery_var5_img2.png").status_code == 200
+
+
+def video(tmp_path, bright_seconds: list[int], seconds: int = 6) -> bytes:
+    """An MJPEG video, one second per entry, bright (a 'gun' for the fake detector) where listed."""
+    frames = tmp_path / "frames"
+    frames.mkdir(parents=True)
+    for i in range(seconds):
+        Image.fromarray(np.full((16, 16, 3), 255 if i in bright_seconds else 0, dtype=np.uint8)).save(frames / f"{i:03d}.png")
+    out = tmp_path / "clip.avi"
+    subprocess.run(
+        ["ffmpeg", "-loglevel", "error", "-framerate", "1", "-i", str(frames / "%03d.png"), "-c:v", "mjpeg", "-r", "2", str(out)],
+        check=True,
+    )
+    return out.read_bytes()
+
+
+def test_a_video_needs_the_weapon_in_three_frames_in_a_row(client, tmp_path):
+    # Bright for one second only: 2 sampled frames at 2 fps, below the 3 the persistence rule needs.
+    row = wait_done(client, send(client, video(tmp_path / "a", [2]), name="short.avi").json()["id"])
+    assert (row["status"], row["min_frames"]) == ("done", 3)
+    assert client.get("/api/alerts").json() == []
+    # Bright for two seconds: 4 sampled frames in a row, so one alert.
+    row = wait_done(client, send(client, video(tmp_path / "b", [2, 3]), name="long.avi").json()["id"])
+    alerts = client.get("/api/alerts", params={"upload_id": row["id"]}).json()
+    assert [a["label"] for a in alerts] == ["gun"]

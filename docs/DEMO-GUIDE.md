@@ -8,8 +8,8 @@ You only type a few commands in Terminal; no AI knowledge is needed.
 - A Mac with an Apple chip (M1 or later) on a recent macOS (it was tested on macOS 26).
 - Homebrew, the Mac package installer (https://brew.sh); the setup script uses it to install FFmpeg and uv if they are missing.
 - About 5 GB of free disk space and an internet connection for the first setup.
-- The file `wd-demo-data.zip` (about 124 MB), which holds the trained model; Ahmad sends it to you separately.
-- The link to this project's repository, also from Ahmad.
+- The file `wd-demo-data.zip` (about 124 MB), which holds the trained model; the project team sends it to you separately.
+- The link to this project's repository, also from the project team.
 
 ## Set it up (once)
 
@@ -53,41 +53,40 @@ When it prints "Open http://127.0.0.1:8490", open that address in your browser.
 The page is in Arabic; the button in the top corner switches to English and back.
 The green text next to it says the model is ready.
 
-## A short demo script
+## The safe demo path
 
-The images below are in the project folder, under `dataset/images/test/`; pick them with the file button on the page.
-They are test images: the model never saw them during training.
+Everything you need is in the `demo-samples` folder of the project; pick the files with the file button on the page.
+None of these files was used to train the model.
+Show them in this order (`demo-samples/README.md` describes each one):
 
-1. **A gun.**
-   Upload `handgun_robbery_var12_img1.png` with camera ID `ATM-07`.
-   An alert appears within a second or two: the frame with a red box around the gun, the label "gun", about 93% confidence, the camera and the time.
+1. **A gun:** `handgun_robbery_var12_img1.png`, camera ID `ATM-07`.
+   Within a second or two an alert appears: the frame with a red box around the gun, "gun", about 94% confidence, the camera and the time.
+2. **A knife:** `knife_robbery_var7_img5.png`, camera ID `ATM-03`.
+   An alert appears with an orange box around the knife, about 95% confidence.
+3. **Nothing to see:** `weapons_safe_Scene4_12.png`, a person crossing a car park, camera ID `CAR-PARK-1`.
+   No alert; the "Uploads" table says "No weapons".
+4. **Real CCTV, staying quiet:** `meva-bus-station-waiting-room.mp4`, 18 seconds of a real bus station waiting room, camera ID `G331`.
+   The app checks 2 frames per second and shows its progress in the "Uploads" table; after a few seconds it says "No weapons".
+5. **The results page:** open "Test results" at the top.
+   Point at "What each change did": false alarms on 20 minutes of real CCTV went from 24 to 0.
+   Further down, each test image shows the true box (dashed green) and what the model found.
 
-2. **A knife.**
-   Upload `knife_robbery_var27_img1.png` with camera ID `ATM-03`.
-   An alert appears with an orange box around the knife, about 92% confidence.
-
-3. **One real CCTV clip without weapons.**
-   Upload a short real CCTV video (MP4 or MOV), with any camera ID.
-   The app checks 2 frames per second and shows its progress in the "Uploads" table.
-   If the Arabic video search demo is set up on your Mac, its clips are in that project's `data/footage/clips/` folder; `pexels-mall-corridor.mp4` (12 seconds) is a good one.
-   A clip with no weapon should ideally say "No weapons", but expect that it may raise a false knife alarm: on `pexels-mall-corridor.mp4` the model marks something on a passer-by as a knife, at 48% confidence, 8 seconds in.
-   Use this to show the limits honestly (see below).
-
-4. **The results page.**
-   Open "Test results" at the top.
-   It shows how the trained model (RF-DETR) and a model used without training (OWLv2) scored on the same 20 test images, the false-alarm check on 11 real clips, and every test image with the true box (dashed green) and what the model found.
-
+The other files in `demo-samples` (two more guns, two more knives, one more weapon-free image) work the same way if you have time.
 To start over, "Clear all" on the alerts page deletes every upload and alert.
+
+If a false alarm appears (for example on a video of your own), say:
+"This is a first version trained on 30 computer-generated images, and a security operator would confirm each alert; more real training footage is the next step."
 
 ## What to say about the results
 
-- The model learned from only 20 images, and all of them are computer-generated (synthetic) ATM robbery scenes.
-- On 20 other synthetic test images from new scenes it found 18 of the 20 weapons, with 2 false detections.
+- The model learned from 30 computer-generated images: 20 ATM robbery scenes with a gun or a knife, and 10 scenes of people without weapons.
+- On 20 other test images from new scenes it found 18 of the 20 weapons, with one false detection.
   That shows the approach works on this kind of picture, not how it would do on a client's real cameras.
-- On about 20 minutes of real CCTV with no weapons in it, it raised 24 false alarms, all of them "knife" (hands, phones and carried objects), and no false guns.
-  This is the main limit, and the expected one for so little and such artificial training data.
-- The way to improve it is real or more varied weapon footage, plus "hard negatives" (phones, tools, hands) for training.
-- The data licence is unclear (the Kaggle page says both "non-commercial" and "commercial use allowed").
+- On about 20 minutes of real CCTV with no weapons in it, the first version raised 24 false alarms, all "knife".
+  Two changes brought that to 0: teaching the model with weapon-free images, and alerting on a video only when the weapon stays in view for 3 frames in a row (about 1 to 1.5 seconds).
+  Zero on 20 minutes of footage is encouraging, not a guarantee.
+- There is no real footage with weapons in this demo, so how well it finds real weapons on real cameras is still unknown; real or more varied weapon footage is the next step.
+- The data licence is unclear (the Kaggle pages say both "non-commercial" and "commercial use allowed").
   Until the data owner confirms, treat this as an internal demo, not a demo for a commercial client.
 
 ## Stop the demo
@@ -105,7 +104,7 @@ scripts/stop.sh
 ## Rebuilding the model instead of using the zip
 
 The zip only saves the training step.
-To build the model yourself (about 10 to 20 minutes), skip step 4 and run, after setup:
+To build the model yourself (about 10 to 25 minutes), skip step 4 and run, after setup:
 
 ```bash
 scripts/train.sh

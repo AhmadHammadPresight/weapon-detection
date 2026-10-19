@@ -5,6 +5,7 @@ One worker thread handles uploads in order, so the detector runs on one image at
 
 from __future__ import annotations
 
+import json
 import logging
 import queue
 import threading
@@ -23,11 +24,11 @@ log = logging.getLogger("wd.processor")
 
 
 class Processor:
-    def __init__(self, settings: Settings, load: Callable[[], tuple[Detector, float]]) -> None:
+    def __init__(self, settings: Settings, load: Callable[[], tuple[Detector, dict[str, float]]]) -> None:
         self.settings = settings
         self._load = load
         self.detector: Detector | None = None
-        self.threshold: float | None = None
+        self.thresholds: dict[str, float] | None = None
         self.state = "loading"  # loading | ready | error
         self.error: str | None = None
         self._queue: queue.Queue[str | None] = queue.Queue()
@@ -47,7 +48,7 @@ class Processor:
 
     def _run(self) -> None:
         try:
-            self.detector, self.threshold = self._load()
+            self.detector, self.thresholds = self._load()
             self.state = "ready"
         except Exception as exc:  # the UI shows this; uploads stay queued until a restart fixes it
             log.exception("could not load the detector")
@@ -69,11 +70,13 @@ class Processor:
             upload = db.get_upload(conn, upload_id)
             if upload is None or upload["status"] == "done":
                 return
+            # Persistence applies to videos only; a still image has one frame, so one detection is enough.
+            min_frames = self.settings.video_min_frames if upload["kind"] == "video" else 1
             db.update_upload(conn, upload_id, status="processing", progress=0, frames=0, error=None,
-                             detector=self.detector.name, threshold=self.threshold)
+                             detector=self.detector.name, thresholds=json.dumps(self.thresholds), min_frames=min_frames)
         path = self.settings.uploads_dir / upload["stored"]
         start = datetime.fromisoformat(upload["start_time"])
-        grouper = AlertGrouper(self.threshold, self.settings.cooldown_seconds)
+        grouper = AlertGrouper(self.thresholds, self.settings.cooldown_seconds, min_frames)
         frames = 0
         if upload["kind"] == "image":
             source = [(0.0, read_image(path))]

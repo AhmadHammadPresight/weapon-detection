@@ -6,6 +6,7 @@ predictions are matched strongest first, and each true box can be claimed once.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
 
 from wd.boxes import Box, iou
@@ -84,27 +85,42 @@ class Counts:
         return 2 * p * r / (p + r) if p + r else 0.0
 
 
-def counts_at(preds: list[Pred], truths: list[GroundTruth], threshold: float) -> Counts:
-    kept = [p for p in preds if p.confidence >= threshold]
+Thresholds = float | Mapping[str, float]  # one alert threshold for every class, or one per class
+
+
+def threshold_for(label: str, thresholds: Thresholds) -> float:
+    return thresholds if isinstance(thresholds, (int, float)) else thresholds[label]
+
+
+def counts_at(preds: list[Pred], truths: list[GroundTruth], thresholds: Thresholds) -> Counts:
+    kept = [p for p in preds if p.confidence >= threshold_for(p.label, thresholds)]
     tp = sum(match(kept, truths))
     return Counts(tp=tp, fp=len(kept) - tp, fn=len(truths) - tp)
 
 
 def choose_threshold(preds: list[Pred], truths: list[GroundTruth], grid: tuple[float, ...] = THRESHOLD_GRID) -> float:
-    """The grid threshold with the best F1 (all classes together); the middle one when several tie."""
+    """The grid threshold with the best F1 over the given predictions; the middle one when several tie."""
     scored = [(round(counts_at(preds, truths, t).f1, 6), t) for t in grid]
     best = max(f1 for f1, _ in scored)
     tied = [t for f1, t in scored if f1 == best]
     return tied[(len(tied) - 1) // 2]
 
 
-def score(preds: list[Pred], truths: list[GroundTruth], classes: tuple[str, ...], threshold: float) -> dict:
+def choose_class_thresholds(preds: list[Pred], truths: list[GroundTruth], classes: tuple[str, ...]) -> dict[str, float]:
+    """One threshold per class, each the best F1 for that class alone (its false detections included)."""
+    return {
+        cls: choose_threshold([p for p in preds if p.label == cls], [t for t in truths if t.label == cls])
+        for cls in classes
+    }
+
+
+def score(preds: list[Pred], truths: list[GroundTruth], classes: tuple[str, ...], thresholds: Thresholds) -> dict:
     """Precision, recall and AP50 per class, plus the same pooled over all classes and mAP50."""
-    out: dict = {"threshold": threshold, "per_class": {}}
+    out: dict = {"thresholds": {cls: threshold_for(cls, thresholds) for cls in classes}, "per_class": {}}
     for cls in classes:
         p = [x for x in preds if x.label == cls]
         t = [x for x in truths if x.label == cls]
-        c = counts_at(p, t, threshold)
+        c = counts_at(p, t, thresholds)
         out["per_class"][cls] = {
             "true_boxes": len(t),
             "tp": c.tp,
@@ -114,7 +130,7 @@ def score(preds: list[Pred], truths: list[GroundTruth], classes: tuple[str, ...]
             "recall": round(c.recall, 3),
             "ap50": round(average_precision(p, t), 3),
         }
-    c = counts_at(preds, truths, threshold)
+    c = counts_at(preds, truths, thresholds)
     out["overall"] = {
         "true_boxes": len(truths),
         "tp": c.tp,

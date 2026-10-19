@@ -1,6 +1,6 @@
 import pytest
 
-from wd.metrics import GroundTruth, Pred, average_precision, choose_threshold, counts_at, match, score
+from wd.metrics import GroundTruth, Pred, average_precision, choose_class_thresholds, choose_threshold, counts_at, match, score
 
 TRUTH = [GroundTruth("a", "gun", (0, 0, 10, 10)), GroundTruth("b", "gun", (0, 0, 10, 10))]
 
@@ -48,3 +48,18 @@ def test_score_reports_per_class_and_overall():
     assert s["per_class"]["knife"]["ap50"] == 1
     assert s["overall"]["tp"] == 2 and s["overall"]["fn"] == 1
     assert s["overall"]["map50"] == 0.75
+
+
+def test_class_thresholds_are_chosen_per_class():
+    truths = [GroundTruth("a", "gun", (0, 0, 10, 10)), GroundTruth("c", "knife", (0, 0, 10, 10))]
+    preds = [
+        Pred("a", "gun", 0.3, (0, 0, 10, 10)),  # a weak but right gun
+        Pred("c", "knife", 0.9, (0, 0, 10, 10)),
+        Pred("neg", "knife", 0.6, (0, 0, 10, 10)),  # a knife on a weapon-free image
+    ]
+    t = choose_class_thresholds(preds, truths, ("gun", "knife"))
+    assert t["gun"] <= 0.3 < 0.6 < t["knife"] <= 0.9
+    s = score(preds, truths, ("gun", "knife"), t)
+    assert s["thresholds"] == t
+    assert (s["overall"]["tp"], s["overall"]["fp"]) == (2, 0)
+    assert counts_at(preds, truths, 0.5).fp == 1  # one shared threshold lets the false knife through

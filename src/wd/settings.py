@@ -21,6 +21,8 @@ class Settings:
     device: str
     sample_fps: float
     cooldown_seconds: float
+    # Videos only: consecutive sampled frames a weapon must be seen in before it raises an alert.
+    video_min_frames: int
 
     @property
     def models_dir(self) -> Path:
@@ -47,4 +49,7 @@ def get_settings() -> Settings:
         device=_env("WD_DEVICE", "mps"),
         sample_fps=float(_env("WD_SAMPLE_FPS", "2")),
         cooldown_seconds=float(_env("WD_COOLDOWN_SECONDS", "10")),
+        # 3 frames in a row at 2 frames per second: the weapon stays in view for 1 to 1.5 s. Chosen by reasoning
+        # (a brandished weapon is held for seconds, false detections tend to flicker), not tuned on any footage.
+        video_min_frames=int(_env("WD_VIDEO_MIN_FRAMES", "3")),
     )

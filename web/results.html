@@ -35,6 +35,23 @@
       </section>
 
       <section class="panel">
+        <h3 data-i18n="results.steps.heading"></h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr>
+              <th data-i18n="col.step"></th>
+              <th data-i18n="col.precision"></th>
+              <th data-i18n="col.recall"></th>
+              <th data-i18n="col.ap50"></th>
+              <th data-i18n="col.realFalseAlarms"></th>
+            </tr></thead>
+            <tbody id="steps-body"></tbody>
+          </table>
+        </div>
+        <p class="muted small" data-i18n="results.steps.note"></p>
+      </section>
+
+      <section class="panel">
         <h3 data-i18n="results.scores.heading"></h3>
         <div class="table-wrap">
           <table class="scores">
@@ -63,8 +80,8 @@
               <th data-i18n="col.clip"></th>
               <th data-i18n="col.seconds"></th>
               <th data-i18n="col.frames"></th>
-              <th data-i18n="col.alertingFrames"></th>
-              <th data-i18n="col.falseAlarms"></th>
+              <th data-i18n="col.faBefore"></th>
+              <th data-i18n="col.faNow"></th>
             </tr></thead>
             <tbody id="fa-body"></tbody>
           </table>

@@ -1,6 +1,10 @@
-"""The fixed train/test split: 40 ATM robbery images committed under `dataset/`, listed in `dataset/manifest.json`.
+"""The fixed train/test split, committed under `dataset/` and listed in `dataset/manifest.json`.
 
-`wd.tools.build_split` wrote the manifest once from the Kaggle download; everything else reads only the copy here.
+- 20 training and 20 test images with weapons, from the ATM robbery set (source "atm").
+- 10 weapon-free training images ("negatives", label "none", no boxes) from the Simuletic surveillance set
+  (source "grounding"), so the model also learns what is not a weapon.
+
+`wd.tools.build_split` wrote the manifest once from the Kaggle downloads; everything else reads only the copy here.
 """
 
 from __future__ import annotations
@@ -18,6 +22,8 @@ DATASET_DIR = REPO_ROOT / "dataset"
 MANIFEST_PATH = DATASET_DIR / "manifest.json"
 CLASSES = ("gun", "knife")
 SPLITS = ("train", "test")
+NEGATIVE = "none"  # the label of a weapon-free image
+SOURCES = ("atm", "grounding")
 # `handgun_robbery_var10_img3.png` -> scene "handgun", variant "handgun_robbery_var10"
 NAME = re.compile(r"^(?P<variant>(?P<scene>handgun|knife)_robbery_var\d+)_img\d+\.png$")
 SCENE_CLASS = {"handgun": "gun", "knife": "knife"}
@@ -32,10 +38,11 @@ class Truth:
 @dataclass(frozen=True)
 class Sample:
     split: str
+    source: str  # "atm" (weapons) or "grounding" (weapon-free negatives)
     file: str  # relative to dataset/
     source_file: str  # relative to the Kaggle dataset folder
-    variant: str
-    label: str  # the scene's weapon class
+    variant: str  # the scene: ATM scene variant, or the surveillance set's scene name for a negative
+    label: str  # the scene's weapon class, or "none" for a negative
     width: int
     height: int
     sha256: str
@@ -79,6 +86,7 @@ def load_manifest(path: Path = MANIFEST_PATH) -> Manifest:
     samples = tuple(
         Sample(
             split=item["split"],
+            source=item["source"],
             file=item["file"],
             source_file=item["source_file"],
             variant=item["variant"],
@@ -94,18 +102,26 @@ def load_manifest(path: Path = MANIFEST_PATH) -> Manifest:
     return Manifest(seed=int(data["seed"]), samples=samples, meta=meta)
 
 
-def check_manifest(manifest: Manifest, per_split: int = 20, check_files: bool = True) -> list[str]:
+def check_manifest(manifest: Manifest, per_split: int = 20, negatives: int = 10, check_files: bool = True) -> list[str]:
     """Every rule the split must keep; returns the broken ones (empty when the split is sound)."""
     problems = []
+    negative_samples = [s for s in manifest.samples if s.label == NEGATIVE]
+    if len(negative_samples) != negatives:
+        problems.append(f"{len(negative_samples)} weapon-free images, expected {negatives}")
+    for s in negative_samples:
+        if s.split != "train" or s.source != "grounding" or s.boxes:
+            problems.append(f"{s.name}: a weapon-free image must be a training image from the surveillance set, without boxes")
+        if s.file != f"images/negatives/{s.name}":
+            problems.append(f"{s.name}: a weapon-free image belongs in images/negatives/")
     for split in SPLITS:
-        samples = manifest.split(split)
+        samples = [s for s in manifest.split(split) if s.label != NEGATIVE]
         if len(samples) != per_split:
             problems.append(f"{split} has {len(samples)} images, expected {per_split}")
         for cls in CLASSES:
             count = sum(s.label == cls for s in samples)
             if count != per_split // 2:
                 problems.append(f"{split} has {count} {cls} images, expected {per_split // 2}")
-    train_variants = {s.variant for s in manifest.split("train")}
+    train_variants = {s.variant for s in manifest.split("train") if s.source == "atm"}
     test_variants = {s.variant for s in manifest.split("test")}
     if shared := train_variants & test_variants:
         problems.append(f"scene variants in both train and test: {sorted(shared)}")
@@ -113,11 +129,20 @@ def check_manifest(manifest: Manifest, per_split: int = 20, check_files: bool = 
     if len(set(names)) != len(names):
         problems.append("an image is listed twice")
     for s in manifest.samples:
-        variant, label = parse_name(s.name)
-        if (variant, label) != (s.variant, s.label):
-            problems.append(f"{s.name}: variant or class does not match its file name")
-        if not s.boxes:
-            problems.append(f"{s.name}: no weapon box")
+        if s.source not in SOURCES:
+            problems.append(f"{s.name}: unknown source {s.source!r}")
+        if s.label == NEGATIVE:
+            pass
+        elif s.source != "atm":
+            problems.append(f"{s.name}: weapon images come from the ATM set only")
+        else:
+            variant, label = parse_name(s.name)
+            if (variant, label) != (s.variant, s.label):
+                problems.append(f"{s.name}: variant or class does not match its file name")
+            if not s.boxes:
+                problems.append(f"{s.name}: no weapon box")
+            if s.file != f"images/{s.split}/{s.name}":
+                problems.append(f"{s.name}: belongs in images/{s.split}/")
         for truth in s.boxes:
             x1, y1, x2, y2 = truth.box
             if truth.label not in CLASSES:

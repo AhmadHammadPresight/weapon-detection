@@ -23,7 +23,7 @@ from wd.api.processor import Processor, remove_files
 from wd.dataset import DATASET_DIR
 from wd.detectors import load_detector
 from wd.media import IMAGE_SUFFIXES, VIDEO_SUFFIXES
-from wd.results import EVALUATION_PATH, FALSE_ALARMS_PATH, alert_threshold, read_json
+from wd.results import EVALUATION_PATH, FALSE_ALARMS_PATH, V1_DIR, alert_thresholds, read_json
 from wd.settings import REPO_ROOT, Settings, get_settings
 
 CAMERA_ID = re.compile(r"^[A-Za-z0-9_.-]{1,40}$")
@@ -41,7 +41,7 @@ class RevalidatedStaticFiles(StaticFiles):
 
 def default_loader(settings: Settings):
     def load():
-        return load_detector(settings.detector, settings.models_dir, settings.device), alert_threshold(settings.detector)
+        return load_detector(settings.detector, settings.models_dir, settings.device), alert_thresholds(settings.detector)
 
     return load
 
@@ -79,10 +79,11 @@ def create_app(settings: Settings | None = None, processor: Processor | None = N
         return {
             "status": processor.state,
             "detector": settings.detector,
-            "threshold": processor.threshold,
+            "thresholds": processor.thresholds,
             "error": processor.error,
             "sample_fps": settings.sample_fps,
             "cooldown_seconds": settings.cooldown_seconds,
+            "video_min_frames": settings.video_min_frames,
         }
 
     @app.post("/api/uploads", status_code=201)
@@ -148,6 +149,10 @@ def create_app(settings: Settings | None = None, processor: Processor | None = N
         return {
             "evaluation": read_json(EVALUATION_PATH),
             "false_alarms": read_json(FALSE_ALARMS_PATH),
+            "v1": {
+                "evaluation": read_json(V1_DIR / EVALUATION_PATH.name),
+                "false_alarms": read_json(V1_DIR / FALSE_ALARMS_PATH.name),
+            },
             "demo_detector": settings.detector,
         }
 

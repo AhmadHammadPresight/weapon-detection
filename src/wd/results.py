@@ -10,6 +10,8 @@ from wd.settings import REPO_ROOT
 RESULTS_DIR = REPO_ROOT / "results"
 EVALUATION_PATH = RESULTS_DIR / "evaluation.json"
 FALSE_ALARMS_PATH = RESULTS_DIR / "false_alarms.json"
+# The first version (20 weapon images, one threshold, single-frame alerts), kept for the before/after comparison.
+V1_DIR = RESULTS_DIR / "v1"
 
 
 def read_json(path: Path) -> dict | None:
@@ -23,9 +25,9 @@ def write_json(path: Path, data: dict) -> None:
     tmp.replace(path)
 
 
-def alert_threshold(detector: str) -> float:
-    """The alert threshold scripts/evaluate.sh chose for `detector` on the training images."""
+def alert_thresholds(detector: str) -> dict[str, float]:
+    """The per-class alert thresholds scripts/evaluate.sh chose for `detector` on the training images."""
     evaluation = read_json(EVALUATION_PATH)
     if not evaluation or detector not in evaluation.get("detectors", {}):
-        raise RuntimeError(f"no threshold for {detector!r} in {EVALUATION_PATH.name}; run scripts/evaluate.sh first")
-    return float(evaluation["detectors"][detector]["threshold"])
+        raise RuntimeError(f"no thresholds for {detector!r} in {EVALUATION_PATH.name}; run scripts/evaluate.sh first")
+    return {label: float(t) for label, t in evaluation["detectors"][detector]["thresholds"].items()}

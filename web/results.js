@@ -9,6 +9,47 @@ function ratio(value) {
   return number(value, 2);
 }
 
+function thresholdText(thresholds) {
+  return Object.entries(thresholds).map(([cls, value]) => `${t(`label.${cls}`)} ${ratio(value)}`).join(" · ");
+}
+
+function falseAlarmText(total) {
+  return total.false_alarms ? t("results.clipsWith", { n: total.false_alarms, c: total.clips_with_false_alarms }) : "0";
+}
+
+// The four steps from the first version to now: test scores of RF-DETR and false alarms on the real clips.
+function renderSteps() {
+  const v1 = data.v1;
+  const body = document.getElementById("steps-body");
+  if (!v1?.evaluation || !v1?.false_alarms || !data.false_alarms) {
+    body.closest("section").hidden = true;
+    return;
+  }
+  const before = v1.evaluation.detectors.rfdetr;
+  const now = data.evaluation.detectors.rfdetr;
+  const firstRules = v1.false_alarms.total.by_rule;
+  const nowRules = data.false_alarms.total.by_rule;
+  const steps = [
+    ["step.1", before.test_single_threshold.overall, firstRules.one_threshold_single_frame],
+    ["step.2", before.test_single_threshold.overall, firstRules.one_threshold_persistence],
+    ["step.3", now.test_single_threshold.overall, nowRules.one_threshold_persistence],
+    ["step.4", now.test.overall, nowRules.class_thresholds_persistence],
+  ];
+  body.replaceChildren(
+    ...steps.map(([key, test, fa], index) =>
+      el(
+        "tr",
+        { class: index === steps.length - 1 ? "overall" : "" },
+        el("td", { text: t(key) }),
+        el("td", { dir: "ltr", text: ratio(test.precision) }),
+        el("td", { dir: "ltr", text: ratio(test.recall) }),
+        el("td", { dir: "ltr", text: ratio(test.map50) }),
+        el("td", { class: fa.false_alarms ? "has-alerts" : "none-found", text: falseAlarmText(fa) }),
+      ),
+    ),
+  );
+}
+
 function scoreRows(name, result) {
   const test = result.test;
   const rows = [];
@@ -25,7 +66,7 @@ function scoreRows(name, result) {
         el("td", { dir: "ltr", text: ratio(s.recall) }),
         el("td", { dir: "ltr", text: ratio(s.ap50) }),
         el("td", { dir: "ltr", text: `${s.tp} / ${s.fp} / ${s.fn}` }),
-        index === 0 ? el("td", { rowspan: classes.length + 1, dir: "ltr", text: ratio(result.threshold) }) : null,
+        index === 0 ? el("td", { rowspan: classes.length + 1, text: thresholdText(result.thresholds) }) : null,
         index === 0 ? el("td", { rowspan: classes.length + 1, dir: "ltr", text: number(result.seconds_per_image, 2) }) : null,
       ),
     );
@@ -60,16 +101,24 @@ function renderFalseAlarms() {
     return;
   }
   table.hidden = false;
-  note.textContent = t("results.fa.note", { detector: t(`detector.${fa.detector}`), threshold: ratio(fa.threshold), fps: fa.sample_fps });
+  note.textContent = t("results.fa.note", {
+    detector: t(`detector.${fa.detector}`),
+    thresholds: thresholdText(fa.thresholds),
+    fps: fa.sample_fps,
+    n: fa.video_min_frames,
+  });
+  // The first version's count per clip stays visible beside today's.
+  const first = Object.fromEntries((data.v1?.false_alarms?.clips ?? []).map((c) => [c.clip, c.by_rule.one_threshold_single_frame.false_alarms]));
+  const cell = (value) => el("td", { dir: "ltr", class: value ? "has-alerts" : value === 0 ? "none-found" : "", text: value ?? "-" });
   const rows = fa.clips.map((c) =>
     el(
       "tr",
       {},
       el("td", { dir: "ltr", text: c.clip }),
-      el("td", { dir: "ltr", text: number(c.seconds, 0) }),
+      el("td", { dir: "ltr", text: Math.round(c.seconds) }),
       el("td", { dir: "ltr", text: c.frames_checked }),
-      el("td", { dir: "ltr", text: c.alerting_frames }),
-      el("td", { dir: "ltr", class: c.false_alarms ? "has-alerts" : "none-found", text: c.false_alarms }),
+      cell(first[c.clip]),
+      cell(c.false_alarms),
     ),
   );
   const total = fa.total;
@@ -78,10 +127,10 @@ function renderFalseAlarms() {
       "tr",
       { class: "overall" },
       el("td", { text: t("results.fa.total") }),
-      el("td", { dir: "ltr", text: number(total.seconds, 0) }),
+      el("td", { dir: "ltr", text: Math.round(total.seconds) }),
       el("td", { dir: "ltr", text: total.frames_checked }),
-      el("td", { dir: "ltr", text: total.alerting_frames }),
-      el("td", { dir: "ltr", class: total.false_alarms ? "has-alerts" : "none-found", text: total.false_alarms }),
+      cell(data.v1?.false_alarms?.total.by_rule.one_threshold_single_frame.false_alarms),
+      cell(total.false_alarms),
     ),
   );
   document.getElementById("fa-body").replaceChildren(...rows);
@@ -102,7 +151,7 @@ function renderImages() {
     ),
   );
   const figures = evaluation.test_images.map((img) => {
-    const preds = result.predictions[img.file].filter((p) => p.confidence >= result.threshold);
+    const preds = result.predictions[img.file].filter((p) => p.confidence >= result.thresholds[p.label]);
     const counts = result.per_image[img.file];
     const truthBoxes = evaluation.truth[img.file].map((b) => boxElement(b.box, img.width, img.height, "truth", null));
     const predBoxes = preds.map((p) =>
@@ -127,6 +176,7 @@ function renderImages() {
 function render() {
   if (!data?.evaluation) return;
   document.getElementById("choice").textContent = t(`results.choice.${data.demo_detector}`);
+  renderSteps();
   renderScores();
   renderFalseAlarms();
   renderImages();
