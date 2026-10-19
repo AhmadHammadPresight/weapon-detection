@@ -17,6 +17,8 @@ The numbers below are a small-sample PoC result on synthetic images, not a perfo
 
 ## Run it on this Mac
 
+To run the demo on another Mac without training, with the ready-made model zip, follow [docs/DEMO-GUIDE.md](docs/DEMO-GUIDE.md).
+
 If setup, training and evaluation have already been run in this folder:
 
 ```bash
