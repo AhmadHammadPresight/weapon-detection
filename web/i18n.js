@@ -4,7 +4,6 @@
 export const STRINGS = {
   ar: {
     "app.title": "كشف الأسلحة في تسجيلات المراقبة",
-    "app.subtitle": "نموذج إثبات مفهوم",
     "nav.alerts": "التنبيهات",
     "nav.results": "نتائج الاختبار",
     "lang.switch": "English",
@@ -92,7 +91,6 @@ export const STRINGS = {
   },
   en: {
     "app.title": "Weapon detection in CCTV",
-    "app.subtitle": "Proof of concept",
     "nav.alerts": "Alerts",
     "nav.results": "Test results",
     "lang.switch": "العربية",
