@@ -30,7 +30,10 @@ You only type a few commands in Terminal; no AI knowledge is needed.
 
    It installs the Python environment and downloads some model files.
    It takes a few minutes, longer on a slow connection (about 1 GB of downloads the first time).
-   It ends with "setup done".
+   It ends with "setup done. Next: scripts/train.sh, then scripts/evaluate.sh, then scripts/start.sh".
+   Ignore that hint: the model zip replaces training and evaluation.
+   Go straight to the unzip step below, then run `scripts/start.sh`.
+   Training is only needed to rebuild the model from scratch (see "Rebuilding the model instead of using the zip" below).
 
 4. Move `wd-demo-data.zip` into the `weapon-detection` folder, then unpack it from Terminal, inside that folder:
 
