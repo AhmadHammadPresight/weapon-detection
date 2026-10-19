@@ -20,10 +20,9 @@ from fastapi.staticfiles import StaticFiles
 
 from wd.api import db
 from wd.api.processor import Processor, remove_files
-from wd.dataset import DATASET_DIR
 from wd.detectors import load_detector
 from wd.media import IMAGE_SUFFIXES, VIDEO_SUFFIXES
-from wd.results import EVALUATION_PATH, FALSE_ALARMS_PATH, V1_DIR, alert_thresholds, read_json
+from wd.results import alert_thresholds
 from wd.settings import REPO_ROOT, Settings, get_settings
 
 CAMERA_ID = re.compile(r"^[A-Za-z0-9_.-]{1,40}$")
@@ -144,23 +143,6 @@ def create_app(settings: Settings | None = None, processor: Processor | None = N
         remove_files(settings.uploads_dir, files)
         remove_files(settings.alerts_dir, files)
 
-    @app.get("/api/results")
-    def results() -> dict:
-        return {
-            "evaluation": read_json(EVALUATION_PATH),
-            "false_alarms": read_json(FALSE_ALARMS_PATH),
-            "v1": {
-                "evaluation": read_json(V1_DIR / EVALUATION_PATH.name),
-                "false_alarms": read_json(V1_DIR / FALSE_ALARMS_PATH.name),
-            },
-            "demo_detector": settings.detector,
-        }
-
-    @app.get("/results")
-    def results_page() -> FileResponse:
-        return FileResponse(WEB_DIR / "results.html", headers={"Cache-Control": "no-cache"})
-
     app.mount("/media/alerts", StaticFiles(directory=settings.alerts_dir), name="alerts")
-    app.mount("/dataset/images", StaticFiles(directory=DATASET_DIR / "images"), name="dataset")
     app.mount("/", RevalidatedStaticFiles(directory=WEB_DIR, html=True), name="web")
     return app

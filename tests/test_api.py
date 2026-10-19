@@ -98,9 +98,6 @@ def test_health_and_pages(client):
         time.sleep(0.02)
     assert client.get("/api/health").json()["thresholds"] == {"gun": 0.5, "knife": 0.5}
     assert "upload-form" in client.get("/").text
-    assert "scores-body" in client.get("/results").text
-    assert client.get("/api/results").status_code == 200
-    assert client.get("/dataset/images/test/knife_robbery_var5_img2.png").status_code == 200
 
 
 def video(tmp_path, bright_seconds: list[int], seconds: int = 6) -> bytes:

@@ -11,7 +11,6 @@
   --warn: #8a5a00;
   --gun: #e62828;
   --knife: #ff9600;
-  --truth: #19c37d;
   --radius: 10px;
   font-family: "SF Arabic", "Geeza Pro", "Noto Sans Arabic", system-ui, -apple-system, "Segoe UI", sans-serif;
   color-scheme: light dark;
@@ -146,35 +145,6 @@ tr.group-start > * { border-block-start: 2px solid var(--line); }
 }
 .label-badge.label-gun { background: var(--gun); }
 .label-badge.label-knife { background: var(--knife); color: #1b1f24; }
-
-.caveat {
-  border-inline-start: 4px solid var(--warn);
-  background: var(--surface);
-  padding: 0.6rem 0.9rem;
-  border-radius: 6px;
-  margin: 0;
-}
-#results { display: grid; gap: 1.25rem; }
-#results > p { margin: 0; }
-
-.detector-switch { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-block: 0.5rem 0.9rem; }
-.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.chip { border-radius: 999px; padding: 0.25rem 0.85rem; font-size: 0.9rem; }
-.chip[aria-pressed="true"] { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
-
-.test-images { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 1rem; }
-.test-image { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-.test-image figcaption { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; padding: 0.5rem 0.65rem; font-size: 0.82rem; }
-.test-image .file { color: var(--muted); }
-.frame-image { position: relative; line-height: 0; }
-.frame-image img { width: 100%; height: auto; display: block; }
-.box { position: absolute; line-height: 1.2; }
-.box span { position: absolute; inset-block-end: 100%; left: -2px; font-size: 0.68rem; padding: 0 3px; white-space: nowrap; color: #fff; }
-.box.truth { border: 2px dashed var(--truth); }
-.box.pred { border: 2px solid var(--gun); }
-.box.pred span { background: var(--gun); }
-.box.pred.label-knife { border-color: var(--knife); }
-.box.pred.label-knife span { background: var(--knife); color: #1b1f24; }
 
 @media (max-width: 720px) {
   main { padding: 1rem; }

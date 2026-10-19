@@ -10,8 +10,6 @@ from wd.settings import REPO_ROOT
 RESULTS_DIR = REPO_ROOT / "results"
 EVALUATION_PATH = RESULTS_DIR / "evaluation.json"
 FALSE_ALARMS_PATH = RESULTS_DIR / "false_alarms.json"
-# The first version (20 weapon images, one threshold, single-frame alerts), kept for the before/after comparison.
-V1_DIR = RESULTS_DIR / "v1"
 
 
 def read_json(path: Path) -> dict | None:

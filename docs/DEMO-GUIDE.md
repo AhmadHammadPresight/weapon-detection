@@ -67,9 +67,6 @@ Show them in this order (`demo-samples/README.md` describes each one):
    No alert; the "Uploads" table says "No weapons".
 4. **Real CCTV, staying quiet:** `meva-bus-station-waiting-room.mp4`, 18 seconds of a real bus station waiting room, camera ID `G331`.
    The app checks 2 frames per second and shows its progress in the "Uploads" table; after a few seconds it says "No weapons".
-5. **The results page:** open "Test results" at the top.
-   Point at "What each change did": false alarms on 20 minutes of real CCTV went from 24 to 0.
-   Further down, each test image shows the true box (dashed green) and what the model found.
 
 The other files in `demo-samples` (two more guns, two more knives, one more weapon-free image) work the same way if you have time.
 To start over, "Clear all" on the alerts page deletes every upload and alert.

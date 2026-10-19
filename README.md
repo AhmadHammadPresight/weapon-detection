@@ -12,7 +12,6 @@ The numbers below are a small-sample PoC result on synthetic images, not a perfo
   Images are checked whole; videos are sampled at 2 frames per second.
   A weapon found at or above its class's alert threshold raises an alert that shows the boxed frame, the class (gun or knife), the confidence, the camera and the camera-local time.
   In a video, a weapon must also be seen in 3 sampled frames in a row (about 1 to 1.5 seconds), near the same place each time, before it raises an alert; sightings of the same class less than 10 seconds apart are one alert, which keeps its strongest frame.
-- **Test results page** (`/results`): what each change did, the scores of both detectors on the 20 test images, the false-alarm check on real footage, and each test image with its true box and the detected boxes.
 - Arabic is the default, right to left, with a switch to English; one language is shown at a time, and every string lives in one table per language (`web/i18n.js`).
 - `demo-samples/` holds ready-to-use demo files (test images the model gets right, weapon-free images and an 18-second real clip that raise no alert), described in `demo-samples/README.md`.
 
