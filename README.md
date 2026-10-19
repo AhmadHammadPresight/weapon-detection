@@ -34,9 +34,9 @@ Times are from an M4 Pro with 48 GB; the download times depend on the network.
 
 | Step | Command | Rough time |
 | --- | --- | --- |
-| 1. Install FFmpeg and uv if missing, the locked Python environment and the pinned model weights | `scripts/setup.sh` | 2 min plus about 1 GB of downloads (RF-DETR Medium 400 MB, OWLv2 620 MB) |
-| 2. Fine-tune RF-DETR on the 20 training images (seeded) | `scripts/train.sh` | 20 min |
-| 3. Score both detectors on the 20 test images, and count false alarms on the real clips | `scripts/evaluate.sh <clips folder>` | 1 min, plus 2 min for the clips |
+| 1. Install FFmpeg and uv if missing, the locked Python environment and the pinned model weights | `scripts/setup.sh` | 2 min, plus about 1 GB of weight downloads the first time on a Mac (RF-DETR Medium 400 MB, OWLv2 620 MB) |
+| 2. Fine-tune RF-DETR on the 20 training images (seeded) | `scripts/train.sh` | 10 to 20 min (slower when another app is using the GPU) |
+| 3. Score both detectors on the 20 test images, and count false alarms on the real clips | `scripts/evaluate.sh <clips folder>` | 2 min |
 | 4. Start the app | `scripts/start.sh` | 15 s |
 | 5. Run the unit tests (optional) | `.venv/bin/pytest` | 5 s |
 
@@ -54,7 +54,20 @@ Steps 2 and 3 rebuild the fine-tuned weights and `results/evaluation.json` from 
 Training is seeded, but PyTorch on the Apple GPU (MPS) is not bit-for-bit deterministic, so a rerun gives slightly different weights.
 Expect the test scores to stay within about one image of the committed ones (with 10 images per class, one image moves a per-class precision or recall by 0.1) and the false-alarm count to move by a few.
 OWLv2 has no training step, so its scores repeat exactly on the same Mac.
-The rerun measured for this README is under [Results](#results).
+
+Measured: a fresh clone of this repo, run through steps 1 to 5 on the same Mac (with the weights already in the user caches), took 2 min for setup, 9 min for training, 2 min for evaluation and 6 s to start, and all tests passed.
+Its scores against the committed ones:
+
+| | Committed run | Fresh-clone rerun |
+| --- | --- | --- |
+| RF-DETR gun: precision / recall / AP@50 | 0.90 / 0.90 / 0.90 | 1.00 / 0.90 / 0.98 |
+| RF-DETR knife: precision / recall / AP@50 | 0.90 / 0.90 / 0.98 | 0.90 / 0.90 / 0.87 |
+| RF-DETR all: precision / recall / mAP@50 | 0.90 / 0.90 / 0.94 | 0.95 / 0.90 / 0.93 |
+| RF-DETR alert threshold (from training images) | 0.45 | 0.45 |
+| OWLv2 all: precision / recall / mAP@50 | 0.79 / 0.75 / 0.77 | 0.79 / 0.75 / 0.77 (identical) |
+| False alarms on the 11 real clips | 24 in 9 clips | 24 in 9 clips (per clip within 2) |
+
+The committed `results/` files are from the first run; the screenshots and numbers in this README match them.
 
 ## The data and the split
 
