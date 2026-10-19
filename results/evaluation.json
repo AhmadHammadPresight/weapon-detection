@@ -1,0 +1,1847 @@
+{
+ "generated": "2026-10-19T09:02:53+00:00",
+ "note": "Small-sample PoC result on 20 synthetic test images; not a performance claim.",
+ "iou_match": 0.5,
+ "score_floor": 0.05,
+ "threshold_rule": "best F1 over both classes on the 20 training images, 0.05 grid, middle of ties",
+ "test_images": [
+  {
+   "file": "images/test/handgun_robbery_var2_img2.png",
+   "label": "gun",
+   "variant": "handgun_robbery_var2",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "file": "images/test/handgun_robbery_var6_img5.png",
+   "label": "gun",
+   "variant": "handgun_robbery_var6",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "file": "images/test/handgun_robbery_var12_img1.png",
+   "label": "gun",
+   "variant": "handgun_robbery_var12",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "file": "images/test/handgun_robbery_var18_img3.png",
+   "label": "gun",
+   "variant": "handgun_robbery_var18",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "file": "images/test/handgun_robbery_var20_img5.png",
+   "label": "gun",
+   "variant": "handgun_robbery_var20",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "file": "images/test/handgun_robbery_var24_img1.png",
+   "label": "gun",
+   "variant": "handgun_robbery_var24",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "file": "images/test/handgun_robbery_var32_img5.png",
+   "label": "gun",
+   "variant": "handgun_robbery_var32",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "file": "images/test/handgun_robbery_var34_img4.png",
+   "label": "gun",
+   "variant": "handgun_robbery_var34",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "file": "images/test/handgun_robbery_var36_img1.png",
+   "label": "gun",
+   "variant": "handgun_robbery_var36",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "file": "images/test/handgun_robbery_var40_img3.png",
+   "label": "gun",
+   "variant": "handgun_robbery_var40",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "file": "images/test/knife_robbery_var5_img2.png",
+   "label": "knife",
+   "variant": "knife_robbery_var5",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "file": "images/test/knife_robbery_var7_img5.png",
+   "label": "knife",
+   "variant": "knife_robbery_var7",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "file": "images/test/knife_robbery_var15_img5.png",
+   "label": "knife",
+   "variant": "knife_robbery_var15",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "file": "images/test/knife_robbery_var19_img3.png",
+   "label": "knife",
+   "variant": "knife_robbery_var19",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "file": "images/test/knife_robbery_var23_img5.png",
+   "label": "knife",
+   "variant": "knife_robbery_var23",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "file": "images/test/knife_robbery_var27_img1.png",
+   "label": "knife",
+   "variant": "knife_robbery_var27",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "file": "images/test/knife_robbery_var35_img5.png",
+   "label": "knife",
+   "variant": "knife_robbery_var35",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "file": "images/test/knife_robbery_var39_img4.png",
+   "label": "knife",
+   "variant": "knife_robbery_var39",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "file": "images/test/knife_robbery_var41_img2.png",
+   "label": "knife",
+   "variant": "knife_robbery_var41",
+   "width": 1024,
+   "height": 1024
+  },
+  {
+   "file": "images/test/knife_robbery_var47_img3.png",
+   "label": "knife",
+   "variant": "knife_robbery_var47",
+   "width": 1024,
+   "height": 1024
+  }
+ ],
+ "truth": {
+  "images/test/handgun_robbery_var2_img2.png": [
+   {
+    "label": "gun",
+    "box": [
+     410.8,
+     524.4,
+     530.3,
+     601.7
+    ]
+   }
+  ],
+  "images/test/handgun_robbery_var6_img5.png": [
+   {
+    "label": "gun",
+    "box": [
+     489.7,
+     541.7,
+     607.7,
+     639.6
+    ]
+   }
+  ],
+  "images/test/handgun_robbery_var12_img1.png": [
+   {
+    "label": "gun",
+    "box": [
+     354.3,
+     253.4,
+     478.7,
+     335.3
+    ]
+   }
+  ],
+  "images/test/handgun_robbery_var18_img3.png": [
+   {
+    "label": "gun",
+    "box": [
+     493.9,
+     324.7,
+     586.2,
+     423.9
+    ]
+   }
+  ],
+  "images/test/handgun_robbery_var20_img5.png": [
+   {
+    "label": "gun",
+    "box": [
+     460.0,
+     313.0,
+     586.8,
+     453.7
+    ]
+   }
+  ],
+  "images/test/handgun_robbery_var24_img1.png": [
+   {
+    "label": "gun",
+    "box": [
+     411.9,
+     579.2,
+     551.3,
+     679.3
+    ]
+   }
+  ],
+  "images/test/handgun_robbery_var32_img5.png": [
+   {
+    "label": "gun",
+    "box": [
+     426.2,
+     407.4,
+     507.9,
+     482.8
+    ]
+   }
+  ],
+  "images/test/handgun_robbery_var34_img4.png": [
+   {
+    "label": "gun",
+    "box": [
+     438.3,
+     351.8,
+     534.6,
+     417.2
+    ]
+   }
+  ],
+  "images/test/handgun_robbery_var36_img1.png": [
+   {
+    "label": "gun",
+    "box": [
+     512.0,
+     543.7,
+     608.3,
+     603.2
+    ]
+   }
+  ],
+  "images/test/handgun_robbery_var40_img3.png": [
+   {
+    "label": "gun",
+    "box": [
+     489.2,
+     413.1,
+     603.2,
+     495.5
+    ]
+   }
+  ],
+  "images/test/knife_robbery_var5_img2.png": [
+   {
+    "label": "knife",
+    "box": [
+     487.3,
+     371.4,
+     596.8,
+     410.6
+    ]
+   }
+  ],
+  "images/test/knife_robbery_var7_img5.png": [
+   {
+    "label": "knife",
+    "box": [
+     473.5,
+     417.3,
+     632.7,
+     531.1
+    ]
+   }
+  ],
+  "images/test/knife_robbery_var15_img5.png": [
+   {
+    "label": "knife",
+    "box": [
+     515.6,
+     461.9,
+     636.4,
+     543.1
+    ]
+   }
+  ],
+  "images/test/knife_robbery_var19_img3.png": [
+   {
+    "label": "knife",
+    "box": [
+     468.9,
+     456.2,
+     564.0,
+     499.3
+    ]
+   }
+  ],
+  "images/test/knife_robbery_var23_img5.png": [
+   {
+    "label": "knife",
+    "box": [
+     515.8,
+     401.7,
+     599.4,
+     463.8
+    ]
+   }
+  ],
+  "images/test/knife_robbery_var27_img1.png": [
+   {
+    "label": "knife",
+    "box": [
+     533.5,
+     475.2,
+     685.6,
+     575.4
+    ]
+   }
+  ],
+  "images/test/knife_robbery_var35_img5.png": [
+   {
+    "label": "knife",
+    "box": [
+     484.1,
+     533.2,
+     580.6,
+     577.9
+    ]
+   }
+  ],
+  "images/test/knife_robbery_var39_img4.png": [
+   {
+    "label": "knife",
+    "box": [
+     482.9,
+     613.4,
+     594.4,
+     679.3
+    ]
+   }
+  ],
+  "images/test/knife_robbery_var41_img2.png": [
+   {
+    "label": "knife",
+    "box": [
+     546.8,
+     626.9,
+     687.4,
+     786.1
+    ]
+   }
+  ],
+  "images/test/knife_robbery_var47_img3.png": [
+   {
+    "label": "knife",
+    "box": [
+     530.4,
+     469.4,
+     669.0,
+     555.3
+    ]
+   }
+  ]
+ },
+ "environment": {
+  "machine": "arm64",
+  "macos": "26.6.2",
+  "device": "mps",
+  "torch": "2.14.1",
+  "rfdetr": "1.11.2",
+  "transformers": "5.20.1"
+ },
+ "detectors": {
+  "rfdetr": {
+   "model": "RF-DETR Medium, COCO-pretrained, fine-tuned on the 20 training images (60 epochs, seed 7)",
+   "threshold": 0.45,
+   "train": {
+    "threshold": 0.45,
+    "per_class": {
+     "gun": {
+      "true_boxes": 10,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "ap50": 1.0
+     },
+     "knife": {
+      "true_boxes": 10,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "ap50": 1.0
+     }
+    },
+    "overall": {
+     "true_boxes": 20,
+     "tp": 20,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "map50": 1.0
+    }
+   },
+   "test": {
+    "threshold": 0.45,
+    "per_class": {
+     "gun": {
+      "true_boxes": 10,
+      "tp": 9,
+      "fp": 1,
+      "fn": 1,
+      "precision": 0.9,
+      "recall": 0.9,
+      "ap50": 0.9
+     },
+     "knife": {
+      "true_boxes": 10,
+      "tp": 9,
+      "fp": 1,
+      "fn": 1,
+      "precision": 0.9,
+      "recall": 0.9,
+      "ap50": 0.977
+     }
+    },
+    "overall": {
+     "true_boxes": 20,
+     "tp": 18,
+     "fp": 2,
+     "fn": 2,
+     "precision": 0.9,
+     "recall": 0.9,
+     "map50": 0.939
+    }
+   },
+   "seconds_per_image": 0.037,
+   "per_image": {
+    "images/test/handgun_robbery_var2_img2.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/handgun_robbery_var6_img5.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/handgun_robbery_var12_img1.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/handgun_robbery_var18_img3.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/handgun_robbery_var20_img5.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/handgun_robbery_var24_img1.png": {
+     "tp": 0,
+     "fp": 1,
+     "fn": 1
+    },
+    "images/test/handgun_robbery_var32_img5.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/handgun_robbery_var34_img4.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/handgun_robbery_var36_img1.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/handgun_robbery_var40_img3.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/knife_robbery_var5_img2.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/knife_robbery_var7_img5.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/knife_robbery_var15_img5.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/knife_robbery_var19_img3.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/knife_robbery_var23_img5.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/knife_robbery_var27_img1.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/knife_robbery_var35_img5.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/knife_robbery_var39_img4.png": {
+     "tp": 0,
+     "fp": 1,
+     "fn": 1
+    },
+    "images/test/knife_robbery_var41_img2.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/knife_robbery_var47_img3.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    }
+   },
+   "predictions": {
+    "images/test/handgun_robbery_var2_img2.png": [
+     {
+      "label": "gun",
+      "confidence": 0.92,
+      "box": [
+       413.4,
+       523.3,
+       530.7,
+       600.3
+      ]
+     }
+    ],
+    "images/test/handgun_robbery_var6_img5.png": [
+     {
+      "label": "gun",
+      "confidence": 0.919,
+      "box": [
+       492.0,
+       540.1,
+       607.7,
+       636.9
+      ]
+     }
+    ],
+    "images/test/handgun_robbery_var12_img1.png": [
+     {
+      "label": "gun",
+      "confidence": 0.934,
+      "box": [
+       355.4,
+       254.9,
+       473.8,
+       334.9
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.105,
+      "box": [
+       408.4,
+       709.8,
+       486.8,
+       774.1
+      ]
+     },
+     {
+      "label": "knife",
+      "confidence": 0.087,
+      "box": [
+       255.0,
+       518.1,
+       486.5,
+       774.5
+      ]
+     }
+    ],
+    "images/test/handgun_robbery_var18_img3.png": [
+     {
+      "label": "gun",
+      "confidence": 0.94,
+      "box": [
+       496.3,
+       328.2,
+       586.9,
+       423.2
+      ]
+     }
+    ],
+    "images/test/handgun_robbery_var20_img5.png": [
+     {
+      "label": "gun",
+      "confidence": 0.936,
+      "box": [
+       460.3,
+       307.5,
+       591.9,
+       454.9
+      ]
+     }
+    ],
+    "images/test/handgun_robbery_var24_img1.png": [
+     {
+      "label": "gun",
+      "confidence": 0.579,
+      "box": [
+       412.7,
+       588.9,
+       527.3,
+       643.1
+      ]
+     }
+    ],
+    "images/test/handgun_robbery_var32_img5.png": [
+     {
+      "label": "gun",
+      "confidence": 0.942,
+      "box": [
+       427.0,
+       406.8,
+       511.4,
+       484.2
+      ]
+     }
+    ],
+    "images/test/handgun_robbery_var34_img4.png": [
+     {
+      "label": "gun",
+      "confidence": 0.919,
+      "box": [
+       439.3,
+       353.1,
+       533.1,
+       416.9
+      ]
+     }
+    ],
+    "images/test/handgun_robbery_var36_img1.png": [
+     {
+      "label": "gun",
+      "confidence": 0.887,
+      "box": [
+       511.6,
+       550.3,
+       613.0,
+       609.2
+      ]
+     }
+    ],
+    "images/test/handgun_robbery_var40_img3.png": [
+     {
+      "label": "gun",
+      "confidence": 0.939,
+      "box": [
+       501.4,
+       412.4,
+       603.4,
+       497.9
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var5_img2.png": [
+     {
+      "label": "knife",
+      "confidence": 0.941,
+      "box": [
+       487.0,
+       371.0,
+       597.5,
+       411.3
+      ]
+     },
+     {
+      "label": "knife",
+      "confidence": 0.401,
+      "box": [
+       333.3,
+       490.2,
+       394.9,
+       547.7
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var7_img5.png": [
+     {
+      "label": "knife",
+      "confidence": 0.949,
+      "box": [
+       471.5,
+       414.4,
+       628.6,
+       528.8
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var15_img5.png": [
+     {
+      "label": "knife",
+      "confidence": 0.934,
+      "box": [
+       516.1,
+       463.6,
+       636.9,
+       547.6
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var19_img3.png": [
+     {
+      "label": "knife",
+      "confidence": 0.896,
+      "box": [
+       470.3,
+       465.4,
+       565.0,
+       499.1
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var23_img5.png": [
+     {
+      "label": "knife",
+      "confidence": 0.916,
+      "box": [
+       523.7,
+       411.6,
+       609.9,
+       460.3
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var27_img1.png": [
+     {
+      "label": "knife",
+      "confidence": 0.92,
+      "box": [
+       534.4,
+       472.2,
+       677.5,
+       583.1
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var35_img5.png": [
+     {
+      "label": "knife",
+      "confidence": 0.832,
+      "box": [
+       497.8,
+       530.6,
+       579.5,
+       563.6
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var39_img4.png": [
+     {
+      "label": "knife",
+      "confidence": 0.729,
+      "box": [
+       393.8,
+       595.6,
+       589.2,
+       675.9
+      ]
+     },
+     {
+      "label": "knife",
+      "confidence": 0.192,
+      "box": [
+       393.6,
+       595.0,
+       483.8,
+       630.9
+      ]
+     },
+     {
+      "label": "knife",
+      "confidence": 0.107,
+      "box": [
+       490.1,
+       618.3,
+       591.4,
+       677.7
+      ]
+     },
+     {
+      "label": "knife",
+      "confidence": 0.064,
+      "box": [
+       554.0,
+       653.6,
+       592.5,
+       677.8
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var41_img2.png": [
+     {
+      "label": "knife",
+      "confidence": 0.879,
+      "box": [
+       543.6,
+       628.5,
+       687.2,
+       790.0
+      ]
+     },
+     {
+      "label": "knife",
+      "confidence": 0.081,
+      "box": [
+       463.8,
+       690.5,
+       551.7,
+       803.6
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var47_img3.png": [
+     {
+      "label": "knife",
+      "confidence": 0.915,
+      "box": [
+       531.0,
+       468.5,
+       666.1,
+       553.0
+      ]
+     },
+     {
+      "label": "knife",
+      "confidence": 0.082,
+      "box": [
+       531.4,
+       469.4,
+       665.3,
+       676.9
+      ]
+     }
+    ]
+   }
+  },
+  "owlv2": {
+   "model": "google/owlv2-base-patch16-ensemble@cfd3195ba4, no training, prompts: a photo of a gun, a photo of a handgun, a photo of a pistol, a photo of a knife",
+   "threshold": 0.25,
+   "train": {
+    "threshold": 0.25,
+    "per_class": {
+     "gun": {
+      "true_boxes": 10,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "ap50": 1.0
+     },
+     "knife": {
+      "true_boxes": 10,
+      "tp": 9,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.9,
+      "ap50": 1.0
+     }
+    },
+    "overall": {
+     "true_boxes": 20,
+     "tp": 19,
+     "fp": 0,
+     "fn": 1,
+     "precision": 1.0,
+     "recall": 0.95,
+     "map50": 1.0
+    }
+   },
+   "test": {
+    "threshold": 0.25,
+    "per_class": {
+     "gun": {
+      "true_boxes": 10,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "ap50": 1.0
+     },
+     "knife": {
+      "true_boxes": 10,
+      "tp": 5,
+      "fp": 4,
+      "fn": 5,
+      "precision": 0.556,
+      "recall": 0.5,
+      "ap50": 0.538
+     }
+    },
+    "overall": {
+     "true_boxes": 20,
+     "tp": 15,
+     "fp": 4,
+     "fn": 5,
+     "precision": 0.789,
+     "recall": 0.75,
+     "map50": 0.769
+    }
+   },
+   "seconds_per_image": 0.243,
+   "per_image": {
+    "images/test/handgun_robbery_var2_img2.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/handgun_robbery_var6_img5.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/handgun_robbery_var12_img1.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/handgun_robbery_var18_img3.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/handgun_robbery_var20_img5.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/handgun_robbery_var24_img1.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/handgun_robbery_var32_img5.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/handgun_robbery_var34_img4.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/handgun_robbery_var36_img1.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/handgun_robbery_var40_img3.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/knife_robbery_var5_img2.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/knife_robbery_var7_img5.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/knife_robbery_var15_img5.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/knife_robbery_var19_img3.png": {
+     "tp": 0,
+     "fp": 1,
+     "fn": 1
+    },
+    "images/test/knife_robbery_var23_img5.png": {
+     "tp": 0,
+     "fp": 1,
+     "fn": 1
+    },
+    "images/test/knife_robbery_var27_img1.png": {
+     "tp": 0,
+     "fp": 1,
+     "fn": 1
+    },
+    "images/test/knife_robbery_var35_img5.png": {
+     "tp": 0,
+     "fp": 1,
+     "fn": 1
+    },
+    "images/test/knife_robbery_var39_img4.png": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 1
+    },
+    "images/test/knife_robbery_var41_img2.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    },
+    "images/test/knife_robbery_var47_img3.png": {
+     "tp": 1,
+     "fp": 0,
+     "fn": 0
+    }
+   },
+   "predictions": {
+    "images/test/handgun_robbery_var2_img2.png": [
+     {
+      "label": "gun",
+      "confidence": 0.602,
+      "box": [
+       409.1,
+       522.8,
+       527.8,
+       599.2
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.214,
+      "box": [
+       408.4,
+       523.0,
+       515.2,
+       559.2
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.066,
+      "box": [
+       616.4,
+       237.0,
+       707.2,
+       264.3
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.066,
+      "box": [
+       537.2,
+       678.1,
+       607.4,
+       719.8
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.059,
+      "box": [
+       485.0,
+       554.3,
+       532.5,
+       601.0
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.055,
+      "box": [
+       224.6,
+       518.9,
+       502.8,
+       637.5
+      ]
+     }
+    ],
+    "images/test/handgun_robbery_var6_img5.png": [
+     {
+      "label": "gun",
+      "confidence": 0.676,
+      "box": [
+       490.8,
+       543.2,
+       607.9,
+       638.3
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.193,
+      "box": [
+       491.8,
+       542.5,
+       599.4,
+       586.4
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.073,
+      "box": [
+       551.5,
+       555.6,
+       613.2,
+       635.9
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.068,
+      "box": [
+       374.5,
+       474.1,
+       609.7,
+       640.9
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.065,
+      "box": [
+       525.9,
+       548.6,
+       599.7,
+       579.5
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.064,
+      "box": [
+       295.1,
+       537.1,
+       607.5,
+       707.6
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.056,
+      "box": [
+       321.7,
+       655.3,
+       375.3,
+       699.2
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.053,
+      "box": [
+       280.6,
+       655.0,
+       374.9,
+       737.9
+      ]
+     }
+    ],
+    "images/test/handgun_robbery_var12_img1.png": [
+     {
+      "label": "gun",
+      "confidence": 0.785,
+      "box": [
+       354.8,
+       253.2,
+       476.2,
+       331.3
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.197,
+      "box": [
+       416.0,
+       707.2,
+       485.7,
+       774.7
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.088,
+      "box": [
+       351.7,
+       253.7,
+       462.5,
+       295.8
+      ]
+     }
+    ],
+    "images/test/handgun_robbery_var18_img3.png": [
+     {
+      "label": "gun",
+      "confidence": 0.735,
+      "box": [
+       495.5,
+       326.4,
+       589.0,
+       424.6
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.198,
+      "box": [
+       494.6,
+       327.4,
+       582.4,
+       375.5
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.054,
+      "box": [
+       312.0,
+       577.9,
+       419.1,
+       681.8
+      ]
+     }
+    ],
+    "images/test/handgun_robbery_var20_img5.png": [
+     {
+      "label": "gun",
+      "confidence": 0.763,
+      "box": [
+       459.1,
+       308.0,
+       590.3,
+       455.1
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.15,
+      "box": [
+       459.4,
+       309.7,
+       584.7,
+       386.3
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.056,
+      "box": [
+       471.5,
+       610.8,
+       492.6,
+       642.5
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.056,
+      "box": [
+       289.5,
+       639.5,
+       367.9,
+       720.3
+      ]
+     }
+    ],
+    "images/test/handgun_robbery_var24_img1.png": [
+     {
+      "label": "gun",
+      "confidence": 0.64,
+      "box": [
+       404.8,
+       589.0,
+       552.0,
+       681.8
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.192,
+      "box": [
+       484.1,
+       592.5,
+       555.5,
+       681.5
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.182,
+      "box": [
+       406.1,
+       590.3,
+       526.1,
+       632.7
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.056,
+      "box": [
+       471.3,
+       592.7,
+       526.7,
+       636.9
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.053,
+      "box": [
+       381.7,
+       660.2,
+       443.2,
+       697.2
+      ]
+     }
+    ],
+    "images/test/handgun_robbery_var32_img5.png": [
+     {
+      "label": "gun",
+      "confidence": 0.691,
+      "box": [
+       425.7,
+       407.1,
+       512.4,
+       480.9
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.19,
+      "box": [
+       424.0,
+       407.4,
+       503.8,
+       442.2
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.151,
+      "box": [
+       448.6,
+       244.5,
+       574.3,
+       312.4
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.146,
+      "box": [
+       990.0,
+       328.9,
+       1023.2,
+       419.3
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.143,
+      "box": [
+       440.6,
+       271.6,
+       493.9,
+       302.8
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.122,
+      "box": [
+       996.7,
+       326.8,
+       1023.1,
+       369.0
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.073,
+      "box": [
+       982.9,
+       256.4,
+       996.4,
+       305.6
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.064,
+      "box": [
+       471.9,
+       265.0,
+       524.9,
+       310.5
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.059,
+      "box": [
+       223.6,
+       584.3,
+       306.3,
+       630.0
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.054,
+      "box": [
+       993.5,
+       355.6,
+       1024.0,
+       387.7
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.053,
+      "box": [
+       478.4,
+       286.4,
+       530.1,
+       317.7
+      ]
+     }
+    ],
+    "images/test/handgun_robbery_var34_img4.png": [
+     {
+      "label": "gun",
+      "confidence": 0.773,
+      "box": [
+       436.9,
+       351.9,
+       536.5,
+       417.4
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.111,
+      "box": [
+       437.2,
+       352.3,
+       503.1,
+       377.4
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.081,
+      "box": [
+       312.3,
+       571.5,
+       424.7,
+       603.1
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.054,
+      "box": [
+       476.5,
+       354.9,
+       520.8,
+       379.5
+      ]
+     }
+    ],
+    "images/test/handgun_robbery_var36_img1.png": [
+     {
+      "label": "gun",
+      "confidence": 0.767,
+      "box": [
+       510.4,
+       550.1,
+       613.8,
+       608.9
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.17,
+      "box": [
+       508.7,
+       551.3,
+       596.8,
+       575.6
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.121,
+      "box": [
+       656.4,
+       754.8,
+       706.4,
+       840.5
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.12,
+      "box": [
+       658.4,
+       760.8,
+       703.9,
+       800.9
+      ]
+     }
+    ],
+    "images/test/handgun_robbery_var40_img3.png": [
+     {
+      "label": "gun",
+      "confidence": 0.713,
+      "box": [
+       503.3,
+       413.8,
+       604.2,
+       499.2
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.239,
+      "box": [
+       503.4,
+       412.3,
+       600.3,
+       443.8
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.085,
+      "box": [
+       303.7,
+       413.4,
+       602.4,
+       585.2
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.07,
+      "box": [
+       276.5,
+       525.9,
+       381.0,
+       594.7
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.059,
+      "box": [
+       277.9,
+       633.0,
+       334.6,
+       698.0
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.053,
+      "box": [
+       550.9,
+       451.5,
+       602.6,
+       500.6
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var5_img2.png": [
+     {
+      "label": "knife",
+      "confidence": 0.398,
+      "box": [
+       501.0,
+       374.6,
+       587.9,
+       412.0
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.062,
+      "box": [
+       334.7,
+       488.9,
+       391.9,
+       541.8
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var7_img5.png": [
+     {
+      "label": "knife",
+      "confidence": 0.668,
+      "box": [
+       468.9,
+       415.3,
+       626.0,
+       526.0
+      ]
+     },
+     {
+      "label": "knife",
+      "confidence": 0.136,
+      "box": [
+       296.9,
+       701.2,
+       383.3,
+       743.2
+      ]
+     },
+     {
+      "label": "knife",
+      "confidence": 0.056,
+      "box": [
+       467.5,
+       416.0,
+       558.2,
+       478.7
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var15_img5.png": [
+     {
+      "label": "knife",
+      "confidence": 0.728,
+      "box": [
+       517.1,
+       463.7,
+       631.3,
+       539.8
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var19_img3.png": [
+     {
+      "label": "knife",
+      "confidence": 0.354,
+      "box": [
+       472.2,
+       465.9,
+       531.6,
+       487.5
+      ]
+     },
+     {
+      "label": "knife",
+      "confidence": 0.064,
+      "box": [
+       458.9,
+       467.8,
+       649.3,
+       595.6
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var23_img5.png": [
+     {
+      "label": "knife",
+      "confidence": 0.365,
+      "box": [
+       522.9,
+       414.3,
+       587.2,
+       449.4
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.057,
+      "box": [
+       560.6,
+       429.5,
+       585.8,
+       445.7
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var27_img1.png": [
+     {
+      "label": "knife",
+      "confidence": 0.401,
+      "box": [
+       528.9,
+       480.4,
+       637.9,
+       548.6
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var35_img5.png": [
+     {
+      "label": "knife",
+      "confidence": 0.332,
+      "box": [
+       501.7,
+       533.7,
+       577.5,
+       560.1
+      ]
+     },
+     {
+      "label": "knife",
+      "confidence": 0.171,
+      "box": [
+       698.8,
+       718.5,
+       727.9,
+       731.2
+      ]
+     },
+     {
+      "label": "knife",
+      "confidence": 0.059,
+      "box": [
+       275.7,
+       539.1,
+       570.2,
+       695.3
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.052,
+      "box": [
+       257.5,
+       653.1,
+       298.7,
+       696.0
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var39_img4.png": [
+     {
+      "label": "knife",
+      "confidence": 0.189,
+      "box": [
+       486.6,
+       613.7,
+       582.1,
+       672.5
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var41_img2.png": [
+     {
+      "label": "knife",
+      "confidence": 0.624,
+      "box": [
+       545.1,
+       622.9,
+       682.1,
+       785.2
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.152,
+      "box": [
+       472.3,
+       685.2,
+       552.8,
+       804.5
+      ]
+     }
+    ],
+    "images/test/knife_robbery_var47_img3.png": [
+     {
+      "label": "knife",
+      "confidence": 0.552,
+      "box": [
+       532.4,
+       469.5,
+       662.6,
+       547.1
+      ]
+     },
+     {
+      "label": "knife",
+      "confidence": 0.21,
+      "box": [
+       531.4,
+       469.4,
+       624.3,
+       523.4
+      ]
+     },
+     {
+      "label": "gun",
+      "confidence": 0.071,
+      "box": [
+       614.5,
+       510.0,
+       669.8,
+       553.2
+      ]
+     },
+     {
+      "label": "knife",
+      "confidence": 0.054,
+      "box": [
+       594.4,
+       596.1,
+       659.1,
+       639.3
+      ]
+     }
+    ]
+   }
+  }
+ }
+}

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>كشف الأسلحة</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body data-page-title="nav.alerts">
+  <header class="topbar">
+    <div class="brand">
+      <h1 data-i18n="app.title"></h1>
+      <p class="muted" data-i18n="app.subtitle"></p>
+    </div>
+    <nav class="pages">
+      <a href="/" aria-current="page" data-i18n="nav.alerts"></a>
+      <a href="/results" data-i18n="nav.results"></a>
+    </nav>
+    <div class="session">
+      <span id="health" class="health" role="status"></span>
+      <button id="lang-switch" type="button" data-i18n="lang.switch"></button>
+    </div>
+  </header>
+
+  <main>
+    <form id="upload-form" class="panel upload-form">
+      <h2 data-i18n="upload.heading"></h2>
+      <div class="upload-grid">
+        <label><span data-i18n="upload.file"></span>
+          <input name="file" type="file" required
+                 accept="image/png,image/jpeg,image/webp,image/bmp,video/*,.avi,.mkv,.mpg,.mpeg,.ts">
+        </label>
+        <label><span data-i18n="upload.camera"></span>
+          <input name="camera_id" type="text" dir="ltr" required pattern="[A-Za-z0-9_.\-]{1,40}" value="CAM-01" autocomplete="off">
+        </label>
+        <label><span data-i18n="upload.start"></span>
+          <input name="start_time" type="datetime-local" step="1" required>
+        </label>
+      </div>
+      <p id="upload-hint" class="muted small"></p>
+      <div class="upload-actions">
+        <button type="submit" class="primary" data-i18n="upload.submit"></button>
+        <progress id="upload-progress" max="1" value="0" hidden></progress>
+        <span id="upload-status" class="status" role="status"></span>
+      </div>
+    </form>
+
+    <section class="panel">
+      <h2 data-i18n="uploads.heading"></h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th data-i18n="col.file"></th>
+            <th data-i18n="col.kind"></th>
+            <th data-i18n="col.camera"></th>
+            <th data-i18n="col.start"></th>
+            <th data-i18n="col.status"></th>
+            <th data-i18n="col.alerts"></th>
+          </tr></thead>
+          <tbody id="uploads-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2><span data-i18n="alerts.heading"></span> <span id="alerts-count" class="muted small"></span></h2>
+        <button id="alerts-clear" type="button" data-i18n="alerts.clear"></button>
+      </div>
+      <p id="alerts-empty" class="muted"></p>
+      <div id="alerts" class="alerts"></div>
+    </section>
+  </main>
+</body>
+</html>

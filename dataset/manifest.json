@@ -1,0 +1,856 @@
+{
+ "source": {
+  "name": "CCTV ATM Robbery Detection Dataset: Gun & Knife",
+  "publisher": "Simuletic",
+  "url": "https://www.kaggle.com/datasets/simuletic/cctv-atm-robbery-detection-dataset-gun-and-knife"
+ },
+ "seed": 20261019,
+ "classes": [
+  "gun",
+  "knife"
+ ],
+ "rule": "Eligible: exactly one weapon box, of the class the scene name says. Per class, scene variants are shuffled with the seed; the first 10 give one training image each and the next 10 one test image each.",
+ "boxes": "pixels of the original image, [x1, y1, x2, y2], converted from the YOLO labels",
+ "images": [
+  {
+   "split": "train",
+   "file": "images/train/handgun_robbery_var4_img2.png",
+   "source_file": "images/handgun_robbery_var4_img2.png",
+   "variant": "handgun_robbery_var4",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "cc2ec82bb5fe3186313c53fe0dcf7ff3d3073743a2fc0bbad728fb6c599e0cc4",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      436.0,
+      389.6,
+      544.7,
+      484.7
+     ]
+    }
+   ]
+  },
+  {
+   "split": "train",
+   "file": "images/train/handgun_robbery_var10_img4.png",
+   "source_file": "images/handgun_robbery_var10_img4.png",
+   "variant": "handgun_robbery_var10",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "75995f7137ae7c4a0e1d93a0c64f742dda9830f4b393be8f071bb22bf1e52834",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      441.5,
+      423.5,
+      569.8,
+      483.4
+     ]
+    }
+   ]
+  },
+  {
+   "split": "train",
+   "file": "images/train/handgun_robbery_var16_img1.png",
+   "source_file": "images/handgun_robbery_var16_img1.png",
+   "variant": "handgun_robbery_var16",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "b24fe104822739106bcf213efa7d28daab579068b6a9bdd1c8b09e2e66912571",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      517.1,
+      366.3,
+      594.4,
+      434.7
+     ]
+    }
+   ]
+  },
+  {
+   "split": "train",
+   "file": "images/train/handgun_robbery_var26_img2.png",
+   "source_file": "images/handgun_robbery_var26_img2.png",
+   "variant": "handgun_robbery_var26",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "1641956b5e2a1bbc3767b882f4a58311d48f606fec7a03a8cd804c51709dbd23",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      475.2,
+      364.0,
+      583.2,
+      467.1
+     ]
+    }
+   ]
+  },
+  {
+   "split": "train",
+   "file": "images/train/handgun_robbery_var28_img4.png",
+   "source_file": "images/handgun_robbery_var28_img4.png",
+   "variant": "handgun_robbery_var28",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "55460451cfe7b8ac2cb6dd398ab51b2bdd671376f7c575af648d99fb914ade33",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      514.3,
+      374.7,
+      608.7,
+      455.4
+     ]
+    }
+   ]
+  },
+  {
+   "split": "train",
+   "file": "images/train/handgun_robbery_var30_img3.png",
+   "source_file": "images/handgun_robbery_var30_img3.png",
+   "variant": "handgun_robbery_var30",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "3214f8639943f36145fdd1051269aa195076a2cd13a4c2d2c13497569eaf10bb",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      441.0,
+      381.5,
+      562.7,
+      499.3
+     ]
+    }
+   ]
+  },
+  {
+   "split": "train",
+   "file": "images/train/handgun_robbery_var42_img1.png",
+   "source_file": "images/handgun_robbery_var42_img1.png",
+   "variant": "handgun_robbery_var42",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "6afa2a6a0de9af999d7f0c6dbde26ba72e6d6d843f7c76638b2d4f2c243e1df8",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      429.3,
+      397.8,
+      519.4,
+      475.6
+     ]
+    }
+   ]
+  },
+  {
+   "split": "train",
+   "file": "images/train/handgun_robbery_var44_img5.png",
+   "source_file": "images/handgun_robbery_var44_img5.png",
+   "variant": "handgun_robbery_var44",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "c63d04bd44568044d3fdd317aa4cf8fc86d3c503b7042a20c8f407ed3b7a5490",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      522.8,
+      342.9,
+      603.7,
+      419.4
+     ]
+    }
+   ]
+  },
+  {
+   "split": "train",
+   "file": "images/train/handgun_robbery_var46_img3.png",
+   "source_file": "images/handgun_robbery_var46_img3.png",
+   "variant": "handgun_robbery_var46",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "ffa06dccd56bf5a3b108978a750640129a1ec7cdfe78b9af219c0db93cc8e94c",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      405.5,
+      362.5,
+      561.4,
+      465.1
+     ]
+    }
+   ]
+  },
+  {
+   "split": "train",
+   "file": "images/train/handgun_robbery_var48_img3.png",
+   "source_file": "images/handgun_robbery_var48_img3.png",
+   "variant": "handgun_robbery_var48",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "db20a5a5077ea3c4554ff38826e56ed2ce38d3de79624481e99a7158049a2cee",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      526.0,
+      291.9,
+      600.8,
+      364.7
+     ]
+    }
+   ]
+  },
+  {
+   "split": "train",
+   "file": "images/train/knife_robbery_var1_img1.png",
+   "source_file": "images/knife_robbery_var1_img1.png",
+   "variant": "knife_robbery_var1",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "bc86fca4a9aff6992982bcbd39ac3d5a0bd71b66d28bc622dae310371cbddb26",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      612.1,
+      439.8,
+      699.6,
+      524.7
+     ]
+    }
+   ]
+  },
+  {
+   "split": "train",
+   "file": "images/train/knife_robbery_var3_img4.png",
+   "source_file": "images/knife_robbery_var3_img4.png",
+   "variant": "knife_robbery_var3",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "2f7e01081efd8308718375e515145390c740f425e0f698a9af74f4ab19232c93",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      366.3,
+      577.9,
+      458.8,
+      669.1
+     ]
+    }
+   ]
+  },
+  {
+   "split": "train",
+   "file": "images/train/knife_robbery_var9_img2.png",
+   "source_file": "images/knife_robbery_var9_img2.png",
+   "variant": "knife_robbery_var9",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "f5b1bcaa2faf75df960fcde14303880768c8a81ad666d56fa2b2552294b000e4",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      449.9,
+      460.0,
+      529.7,
+      503.1
+     ]
+    }
+   ]
+  },
+  {
+   "split": "train",
+   "file": "images/train/knife_robbery_var11_img4.png",
+   "source_file": "images/knife_robbery_var11_img4.png",
+   "variant": "knife_robbery_var11",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "73b5ed12ce2f6ac717050acafe027678da0b02f167cd3498c631b7c3b9d894c3",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      514.5,
+      429.6,
+      651.4,
+      531.0
+     ]
+    }
+   ]
+  },
+  {
+   "split": "train",
+   "file": "images/train/knife_robbery_var13_img3.png",
+   "source_file": "images/knife_robbery_var13_img3.png",
+   "variant": "knife_robbery_var13",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "b62b8d2c3790d01d8110884a2fe2da0237f2d3b3d39d44d38521d0a4551ca2be",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      570.5,
+      565.2,
+      683.5,
+      598.4
+     ]
+    }
+   ]
+  },
+  {
+   "split": "train",
+   "file": "images/train/knife_robbery_var25_img1.png",
+   "source_file": "images/knife_robbery_var25_img1.png",
+   "variant": "knife_robbery_var25",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "642a35e83bfb4a243493c28d9552a8bd0a5a5451dbb81ecfe5bc539e7537c7c9",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      467.6,
+      490.4,
+      655.8,
+      609.2
+     ]
+    }
+   ]
+  },
+  {
+   "split": "train",
+   "file": "images/train/knife_robbery_var29_img3.png",
+   "source_file": "images/knife_robbery_var29_img3.png",
+   "variant": "knife_robbery_var29",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "b273ee91c638054cbd9d12aad6885b9b8bb1bb89c93add48d5af69468a109c7b",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      665.1,
+      791.4,
+      896.9,
+      911.2
+     ]
+    }
+   ]
+  },
+  {
+   "split": "train",
+   "file": "images/train/knife_robbery_var33_img1.png",
+   "source_file": "images/knife_robbery_var33_img1.png",
+   "variant": "knife_robbery_var33",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "871c2f8817d8ab3b81dc2f731df2c4cc2a364e5e89896fcb5416073c5fa7b4ff",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      533.5,
+      444.8,
+      623.5,
+      513.3
+     ]
+    }
+   ]
+  },
+  {
+   "split": "train",
+   "file": "images/train/knife_robbery_var43_img5.png",
+   "source_file": "images/knife_robbery_var43_img5.png",
+   "variant": "knife_robbery_var43",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "ec35bef890471d934db3a32265173c5c1160a3b7032a8a4d68820f05fdc64e03",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      469.0,
+      367.2,
+      575.1,
+      401.1
+     ]
+    }
+   ]
+  },
+  {
+   "split": "train",
+   "file": "images/train/knife_robbery_var45_img4.png",
+   "source_file": "images/knife_robbery_var45_img4.png",
+   "variant": "knife_robbery_var45",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "5b2c6b76d05682dddff954becf6138b12d38d49042eac4ab70349b1fefeffd9a",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      579.3,
+      408.9,
+      678.6,
+      486.8
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/handgun_robbery_var2_img2.png",
+   "source_file": "images/handgun_robbery_var2_img2.png",
+   "variant": "handgun_robbery_var2",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "e55ba477d4c5ed6e297a94379f69a36269e99662dadae2243cdb5780b2915c6d",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      410.8,
+      524.4,
+      530.3,
+      601.7
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/handgun_robbery_var6_img5.png",
+   "source_file": "images/handgun_robbery_var6_img5.png",
+   "variant": "handgun_robbery_var6",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "793996a154c250fcd5180328be4d84f75f5e55b49c2925841fd2f8af109bc9b9",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      489.7,
+      541.7,
+      607.7,
+      639.6
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/handgun_robbery_var12_img1.png",
+   "source_file": "images/handgun_robbery_var12_img1.png",
+   "variant": "handgun_robbery_var12",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "0f8f2a09a8c653572fbc652633ea1e4b66ea807769e3e356ee33d79d4f242696",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      354.3,
+      253.4,
+      478.7,
+      335.3
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/handgun_robbery_var18_img3.png",
+   "source_file": "images/handgun_robbery_var18_img3.png",
+   "variant": "handgun_robbery_var18",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "7295dfad881580a21b3ed85e024d1e14a03a7c6a6bb7b89faaed4cb9d3f12972",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      493.9,
+      324.7,
+      586.2,
+      423.9
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/handgun_robbery_var20_img5.png",
+   "source_file": "images/handgun_robbery_var20_img5.png",
+   "variant": "handgun_robbery_var20",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "61ffc1261f1b49d7a14da639c52ebbaded7875426592412a717544a1168af529",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      460.0,
+      313.0,
+      586.8,
+      453.7
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/handgun_robbery_var24_img1.png",
+   "source_file": "images/handgun_robbery_var24_img1.png",
+   "variant": "handgun_robbery_var24",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "769d8444984f2640dea34cafdfe7e83d128bbeea3b807be7fd69c797d17fde46",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      411.9,
+      579.2,
+      551.3,
+      679.3
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/handgun_robbery_var32_img5.png",
+   "source_file": "images/handgun_robbery_var32_img5.png",
+   "variant": "handgun_robbery_var32",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "490a24aa8fe2bd04f074e22445809a80187e34890b503b2af96c91e3f099aa8e",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      426.2,
+      407.4,
+      507.9,
+      482.8
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/handgun_robbery_var34_img4.png",
+   "source_file": "images/handgun_robbery_var34_img4.png",
+   "variant": "handgun_robbery_var34",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "c18148d2c20918e6de1d04a88240db3aeee3dcdf73cb0c71361011edd7322762",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      438.3,
+      351.8,
+      534.6,
+      417.2
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/handgun_robbery_var36_img1.png",
+   "source_file": "images/handgun_robbery_var36_img1.png",
+   "variant": "handgun_robbery_var36",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "414ff4d61b91cef9ff472a5b5cd237532341efd7416bf09191f1852ff5e531bc",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      512.0,
+      543.7,
+      608.3,
+      603.2
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/handgun_robbery_var40_img3.png",
+   "source_file": "images/handgun_robbery_var40_img3.png",
+   "variant": "handgun_robbery_var40",
+   "label": "gun",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "74d2c9fc84329e77dde425f16543724d7cb9f9de7fd6855530eb5dd5bb3a70bf",
+   "boxes": [
+    {
+     "label": "gun",
+     "box": [
+      489.2,
+      413.1,
+      603.2,
+      495.5
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/knife_robbery_var5_img2.png",
+   "source_file": "images/knife_robbery_var5_img2.png",
+   "variant": "knife_robbery_var5",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "657a63e357efa7ac29dd1824ae4919375651b2c1c6f0fe9a7f1bca8acfd6ba47",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      487.3,
+      371.4,
+      596.8,
+      410.6
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/knife_robbery_var7_img5.png",
+   "source_file": "images/knife_robbery_var7_img5.png",
+   "variant": "knife_robbery_var7",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "65fffd77a01420964fe7283be1b18f18578f4996d9acdde3ee9390d1d32f7289",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      473.5,
+      417.3,
+      632.7,
+      531.1
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/knife_robbery_var15_img5.png",
+   "source_file": "images/knife_robbery_var15_img5.png",
+   "variant": "knife_robbery_var15",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "1bfdd3871a5c9ca572ec04d190e4b1ea4819f56b1b6e2032fa3941bbf981f8a8",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      515.6,
+      461.9,
+      636.4,
+      543.1
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/knife_robbery_var19_img3.png",
+   "source_file": "images/knife_robbery_var19_img3.png",
+   "variant": "knife_robbery_var19",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "cc2425a52577bb084cc13a0699094efbbd816c5324c96dbb8574264aa8dd4e8c",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      468.9,
+      456.2,
+      564.0,
+      499.3
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/knife_robbery_var23_img5.png",
+   "source_file": "images/knife_robbery_var23_img5.png",
+   "variant": "knife_robbery_var23",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "1975dba1847807e8b5367f7c53b4d71a640aaa4b2275d82eebc565c985601c6b",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      515.8,
+      401.7,
+      599.4,
+      463.8
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/knife_robbery_var27_img1.png",
+   "source_file": "images/knife_robbery_var27_img1.png",
+   "variant": "knife_robbery_var27",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "d1e3e0c04da4b8bd0ed5c86d7b57f5d77ed62b16ce6489380a3e581c50bebc89",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      533.5,
+      475.2,
+      685.6,
+      575.4
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/knife_robbery_var35_img5.png",
+   "source_file": "images/knife_robbery_var35_img5.png",
+   "variant": "knife_robbery_var35",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "869aea98fa66811ac31d2f526f43b2c75e5f2beae1aa7af0a4cbf4057a3d768b",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      484.1,
+      533.2,
+      580.6,
+      577.9
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/knife_robbery_var39_img4.png",
+   "source_file": "images/knife_robbery_var39_img4.png",
+   "variant": "knife_robbery_var39",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "eb72395f96c7168b8e813836fe7971bbd8e552992539c55521beaa931f07730c",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      482.9,
+      613.4,
+      594.4,
+      679.3
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/knife_robbery_var41_img2.png",
+   "source_file": "images/knife_robbery_var41_img2.png",
+   "variant": "knife_robbery_var41",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "88e59eda4eacf84477c50cd410455fc85b1354774c2bfe7eb46bafcca0c2aab4",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      546.8,
+      626.9,
+      687.4,
+      786.1
+     ]
+    }
+   ]
+  },
+  {
+   "split": "test",
+   "file": "images/test/knife_robbery_var47_img3.png",
+   "source_file": "images/knife_robbery_var47_img3.png",
+   "variant": "knife_robbery_var47",
+   "label": "knife",
+   "width": 1024,
+   "height": 1024,
+   "sha256": "25ac9b8ddce0e7867a5fe8f26ac2fc52d5d2effbbf4668e256809929a1fd8b9a",
+   "boxes": [
+    {
+     "label": "knife",
+     "box": [
+      530.4,
+      469.4,
+      669.0,
+      555.3
+     ]
+    }
+   ]
+  }
+ ]
+}

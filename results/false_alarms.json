@@ -1,0 +1,336 @@
+{
+ "generated": "2026-10-19T09:02:10+00:00",
+ "detector": "rfdetr",
+ "threshold": 0.45,
+ "sample_fps": 2.0,
+ "cooldown_seconds": 10.0,
+ "note": "Real CCTV clips with no weapons in them: every alert is a false alarm.",
+ "clips": [
+  {
+   "clip": "caviar-leftbag-atchair.mp4",
+   "seconds": 44.8,
+   "resolution": "384x288",
+   "frames_checked": 90,
+   "alerting_frames": 30,
+   "false_alarms": 2,
+   "by_class": {
+    "gun": 0,
+    "knife": 2
+   },
+   "alerts": [
+    {
+     "label": "knife",
+     "at_seconds": 14.5,
+     "confidence": 0.884,
+     "frames": 22
+    },
+    {
+     "label": "knife",
+     "at_seconds": 40.0,
+     "confidence": 0.811,
+     "frames": 8
+    }
+   ],
+   "top_confidence": 0.884,
+   "processing_seconds": 3.8
+  },
+  {
+   "clip": "caviar-leftbag-pickedup.mp4",
+   "seconds": 54.5,
+   "resolution": "384x288",
+   "frames_checked": 109,
+   "alerting_frames": 27,
+   "false_alarms": 1,
+   "by_class": {
+    "gun": 0,
+    "knife": 1
+   },
+   "alerts": [
+    {
+     "label": "knife",
+     "at_seconds": 2.0,
+     "confidence": 0.821,
+     "frames": 27
+    }
+   ],
+   "top_confidence": 0.821,
+   "processing_seconds": 4.2
+  },
+  {
+   "clip": "meva-g331-waiting-0307.mp4",
+   "seconds": 300.3,
+   "resolution": "1920x1080",
+   "frames_checked": 601,
+   "alerting_frames": 25,
+   "false_alarms": 7,
+   "by_class": {
+    "gun": 0,
+    "knife": 7
+   },
+   "alerts": [
+    {
+     "label": "knife",
+     "at_seconds": 20.0,
+     "confidence": 0.452,
+     "frames": 1
+    },
+    {
+     "label": "knife",
+     "at_seconds": 79.5,
+     "confidence": 0.517,
+     "frames": 4
+    },
+    {
+     "label": "knife",
+     "at_seconds": 149.0,
+     "confidence": 0.458,
+     "frames": 1
+    },
+    {
+     "label": "knife",
+     "at_seconds": 212.0,
+     "confidence": 0.499,
+     "frames": 2
+    },
+    {
+     "label": "knife",
+     "at_seconds": 241.5,
+     "confidence": 0.462,
+     "frames": 1
+    },
+    {
+     "label": "knife",
+     "at_seconds": 266.0,
+     "confidence": 0.773,
+     "frames": 1
+    },
+    {
+     "label": "knife",
+     "at_seconds": 294.0,
+     "confidence": 0.55,
+     "frames": 15
+    }
+   ],
+   "top_confidence": 0.773,
+   "processing_seconds": 23.8
+  },
+  {
+   "clip": "meva-g331-waiting-0315.mp4",
+   "seconds": 130.0,
+   "resolution": "1920x1080",
+   "frames_checked": 260,
+   "alerting_frames": 6,
+   "false_alarms": 2,
+   "by_class": {
+    "gun": 0,
+    "knife": 2
+   },
+   "alerts": [
+    {
+     "label": "knife",
+     "at_seconds": 63.5,
+     "confidence": 0.46,
+     "frames": 1
+    },
+    {
+     "label": "knife",
+     "at_seconds": 88.5,
+     "confidence": 0.473,
+     "frames": 5
+    }
+   ],
+   "top_confidence": 0.473,
+   "processing_seconds": 10.6
+  },
+  {
+   "clip": "meva-g420-stairs.mp4",
+   "seconds": 150.0,
+   "resolution": "1920x1072",
+   "frames_checked": 300,
+   "alerting_frames": 0,
+   "false_alarms": 0,
+   "by_class": {
+    "gun": 0,
+    "knife": 0
+   },
+   "alerts": [],
+   "top_confidence": 0.268,
+   "processing_seconds": 12.1
+  },
+  {
+   "clip": "meva-g421-cafe.mp4",
+   "seconds": 130.0,
+   "resolution": "1920x1072",
+   "frames_checked": 260,
+   "alerting_frames": 11,
+   "false_alarms": 4,
+   "by_class": {
+    "gun": 0,
+    "knife": 4
+   },
+   "alerts": [
+    {
+     "label": "knife",
+     "at_seconds": 65.0,
+     "confidence": 0.49,
+     "frames": 5
+    },
+    {
+     "label": "knife",
+     "at_seconds": 80.5,
+     "confidence": 0.545,
+     "frames": 4
+    },
+    {
+     "label": "knife",
+     "at_seconds": 99.5,
+     "confidence": 0.498,
+     "frames": 1
+    },
+    {
+     "label": "knife",
+     "at_seconds": 126.0,
+     "confidence": 0.463,
+     "frames": 1
+    }
+   ],
+   "top_confidence": 0.545,
+   "processing_seconds": 10.7
+  },
+  {
+   "clip": "meva-g638-entrance.mp4",
+   "seconds": 130.0,
+   "resolution": "1920x1072",
+   "frames_checked": 260,
+   "alerting_frames": 55,
+   "false_alarms": 4,
+   "by_class": {
+    "gun": 0,
+    "knife": 4
+   },
+   "alerts": [
+    {
+     "label": "knife",
+     "at_seconds": 10.0,
+     "confidence": 0.539,
+     "frames": 9
+    },
+    {
+     "label": "knife",
+     "at_seconds": 23.5,
+     "confidence": 0.478,
+     "frames": 4
+    },
+    {
+     "label": "knife",
+     "at_seconds": 44.0,
+     "confidence": 0.54,
+     "frames": 8
+    },
+    {
+     "label": "knife",
+     "at_seconds": 87.5,
+     "confidence": 0.569,
+     "frames": 34
+    }
+   ],
+   "top_confidence": 0.569,
+   "processing_seconds": 10.7
+  },
+  {
+   "clip": "nvidia-071-c0644.mp4",
+   "seconds": 120.0,
+   "resolution": "1920x1080",
+   "frames_checked": 240,
+   "alerting_frames": 1,
+   "false_alarms": 1,
+   "by_class": {
+    "gun": 0,
+    "knife": 1
+   },
+   "alerts": [
+    {
+     "label": "knife",
+     "at_seconds": 101.0,
+     "confidence": 0.576,
+     "frames": 1
+    }
+   ],
+   "top_confidence": 0.576,
+   "processing_seconds": 9.8
+  },
+  {
+   "clip": "nvidia-071-c0647.mp4",
+   "seconds": 120.0,
+   "resolution": "1920x1080",
+   "frames_checked": 240,
+   "alerting_frames": 4,
+   "false_alarms": 2,
+   "by_class": {
+    "gun": 0,
+    "knife": 2
+   },
+   "alerts": [
+    {
+     "label": "knife",
+     "at_seconds": 31.0,
+     "confidence": 0.557,
+     "frames": 3
+    },
+    {
+     "label": "knife",
+     "at_seconds": 94.0,
+     "confidence": 0.502,
+     "frames": 1
+    }
+   ],
+   "top_confidence": 0.557,
+   "processing_seconds": 9.9
+  },
+  {
+   "clip": "pexels-mall-corridor.mp4",
+   "seconds": 11.9,
+   "resolution": "1920x1080",
+   "frames_checked": 24,
+   "alerting_frames": 1,
+   "false_alarms": 1,
+   "by_class": {
+    "gun": 0,
+    "knife": 1
+   },
+   "alerts": [
+    {
+     "label": "knife",
+     "at_seconds": 8.0,
+     "confidence": 0.481,
+     "frames": 1
+    }
+   ],
+   "top_confidence": 0.481,
+   "processing_seconds": 1.2
+  },
+  {
+   "clip": "pexels-mall-high-angle.mp4",
+   "seconds": 31.3,
+   "resolution": "2560x1440",
+   "frames_checked": 63,
+   "alerting_frames": 0,
+   "false_alarms": 0,
+   "by_class": {
+    "gun": 0,
+    "knife": 0
+   },
+   "alerts": [],
+   "top_confidence": 0.335,
+   "processing_seconds": 3.2
+  }
+ ],
+ "total": {
+  "clips": 11,
+  "seconds": 1222.8,
+  "frames_checked": 2447,
+  "alerting_frames": 160,
+  "false_alarms": 24,
+  "clips_with_false_alarms": 9
+ }
+}
